@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.etc.dao.PomsMapper">
+
+	
+	<select id="getCountBySearch" resultType="java.lang.Integer" statementType="STATEMENT">
+		SELECT
+			COUNT( * ) AS searchCount
+		FROM
+			(
+				(
+				SELECT
+					a.id AS id,
+					a.article_title AS title
+				FROM
+					caixin_article a
+				WHERE
+					a.article_title LIKE '%${searchVal}%'
+					OR a.article_content LIKE '%${searchVal}%'
+					OR a.article_introduction LIKE '%${searchVal}%'
+				) UNION ALL
+				(
+				SELECT
+					b.id AS id,
+					b.article_title AS title
+				FROM
+					caixin_weekly_article b
+				WHERE
+					b.article_title LIKE '%${searchVal}%'
+					OR b.article_content LIKE '%${searchVal}%'
+					OR b.article_summary LIKE '%${searchVal}%'
+				)
+			) AS t
+
+	</select>
+
+	<select id="searchPage" resultType="com.etc.entity.Article" statementType="STATEMENT">
+		SELECT
+			id,
+			title,
+			introduction,
+			articleTime AS artTime,
+			articleType
+		FROM
+			(
+				(
+				SELECT
+					a.id AS id,
+					a.article_title AS title,
+					a.article_introduction AS introduction,
+					a.article_time AS articleTime,
+					'头条' as articleType
+				FROM
+					caixin_article a
+				WHERE
+					a.article_title LIKE '%${searchVal}%'
+					OR a.article_content LIKE '%${searchVal}%'
+					OR a.article_introduction LIKE '%${searchVal}%'
+				) UNION ALL
+				(
+				SELECT
+					b.id AS id,
+					b.article_title AS title,
+					b.article_summary AS introduction,
+					b.article_deal_time AS articleTime,
+					'周刊' as articleType
+				FROM
+					caixin_weekly_article b
+				WHERE
+					b.article_title LIKE '%${searchVal}%'
+					OR b.article_content LIKE '%${searchVal}%'
+					OR b.article_summary LIKE '%${searchVal}%'
+				) UNION ALL
+				(
+				SELECT
+					d.article_id AS id,
+					d.article_title AS title,
+					d.article_summary AS introduction,
+					d.article_create_at AS articleTime,
+					'我闻' as articleType
+				FROM
+					wenew_article d
+				WHERE
+					d.article_title LIKE '%${searchVal}%'
+					OR d.article_desc LIKE '%${searchVal}%'
+					OR d.article_summary LIKE '%${searchVal}%'
+				)
+			) AS t
+		ORDER BY
+			t.articleTime DESC
+			LIMIT ${pageStart},${pageSize}
+	</select>
+
+</mapper>

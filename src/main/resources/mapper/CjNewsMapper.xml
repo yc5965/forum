@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.etc.dao.CjNewsMapper">
+
+    <select id="findPageNewsDetail" resultType="com.etc.entity.CjNewsDetail">
+        SELECT b.id as id,
+        b.title as title,
+        b.content as content,
+        b.sub_content as subContent,
+        b.news_date as newsDate,
+        b.src as src,
+        b.channels as channels,
+        b.create_date as createDate
+        from (
+        select * from cj_news_detail
+        <where>
+            src= #{cjNewsDetail.src} and FIND_IN_SET(#{cjNewsDetail.channels}, channels)
+            <if test="cjNewsDetail.content != null and cjNewsDetail.content != ''">
+                and content like concat('%',#{cjNewsDetail.content},'%')
+            </if>
+        </where>
+        ) b
+        order by news_date desc
+        LIMIT ${pageStart},${pageSize}
+    </select>
+
+    <select id="findNewsDetailCount" resultType="java.lang.Integer">
+        SELECT
+        count(*) AS newsCount
+        from (
+        select * from cj_news_detail
+        <where>
+            src= #{cjNewsDetail.src} and FIND_IN_SET(#{cjNewsDetail.channels}, channels)
+            <if test="cjNewsDetail.content != null and cjNewsDetail.content != ''">
+                and content like concat('%',#{cjNewsDetail.content},'%')
+            </if>
+        </where>
+        ) b
+        order by news_date desc
+    </select>
+
+    <select id="findNewsDict" resultType="com.etc.entity.CjNewsSrcDict">
+        SELECT
+	      a.src AS src,
+	      a.src_name AS srcName,
+	      a.des AS des,
+	      a.channel AS channel,
+	      a.channel_name AS channelName,
+	      a.sort AS sort
+        FROM
+	      ( SELECT * FROM cj_news_src_dict ) a
+        ORDER BY
+	      src ASC,
+	      sort DESC
+    </select>
+
+</mapper>

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.etc.dao.BsUserDynamicMapper">
+
+    <select id="findDynamicLike" resultType="bsUserDynamic">
+        SELECT
+            y.postId AS id,
+            y.ownInfoType AS ownInfoType,
+            y.title AS title,
+            ifnull(y.commentId,f.commentId) AS commentId,
+            s.id AS userId,
+            s.userName AS userName,
+            f.content AS content,
+            f.behaviorType AS behaviorType,
+            f.createTime AS createTime
+        FROM
+            (
+            SELECT
+                a.id AS id,
+                '帖子' AS ownInfoType,
+                a.title AS title,
+                null AS commentId,
+                a.id As postId
+            FROM
+                bs_post a
+            WHERE
+                a.create_by = #{uId}
+                AND a.del_flag = '0' UNION ALL
+            SELECT
+                b.id AS id,
+                '评论' AS ownInfoType,
+                b.content AS title,
+                b.id AS commentId,
+                b.post_id AS postId
+            FROM
+                bs_comment b
+            WHERE
+                b.create_by = #{uId}
+                AND b.del_flag = '0'
+            ) y
+            JOIN (
+            SELECT
+                c.post_id AS postId,
+                c.create_by AS userId,
+                '评论' AS behaviorType,
+                c.content AS content,
+                c.create_date AS createTime,
+                c.id as commentId
+            FROM
+                bs_comment c
+            WHERE
+                c.del_flag = '0' UNION ALL
+            SELECT
+                d.ref_id AS postId,
+                d.create_by AS userId,
+                '点赞' AS behaviorType,
+                '' AS content,
+                d.create_date AS createTime,
+                '' as commentId
+            FROM
+                bs_like d
+            WHERE
+                d.del_flag = '0'
+            ) f ON y.id = f.postId
+            LEFT JOIN ( SELECT NAME AS userName, id AS id FROM bs_user WHERE del_flag = '0' ) s ON f.userId = s.id
+        UNION ALL
+        SELECT
+            n.post_id AS postId,
+            '' AS ownInfoType,
+            bp.title AS title,
+             n.id AS commentId,
+            m.id AS userId,
+            m.userName AS userName,
+            n.content AS content,
+            '消息' AS behaviorType,
+            n.create_date AS createTime
+            FROM
+                bs_comment n  LEFT JOIN ( SELECT NAME AS userName, id AS id FROM bs_user WHERE del_flag = '0' ) m ON n.create_by = m.id
+                left join bs_post bp on bp.del_flag = '0' and bp.id = n.post_id
+            WHERE
+                n.del_flag = '0' and n.content like '%${uName}%' or n.content like '%所有人%'
+        ORDER BY createTime DESC
+        LIMIT ${pageStart}, ${pageSize}
+    </select>
+
+    <select id="findUserDynamicCount" resultType="bsUserDynamic">
+       SELECT
+            y.id AS id,
+            y.ownInfoType AS ownInfoType,
+            y.title AS title,
+            f.commentId AS commentId,
+            s.id AS userId,
+            s.userName AS userName,
+            f.content AS content,
+            f.behaviorType AS behaviorType,
+            f.createTime AS createTime
+        FROM
+            (
+              SELECT
+                  a.id AS id,
+                  '帖子' AS ownInfoType,
+                  a.title AS title
+              FROM
+                  bs_post a
+              WHERE
+                  a.create_by = #{uId}
+                  AND a.del_flag = '0' UNION ALL
+              SELECT
+                  b.id AS id,
+                  '评论' AS ownInfoType,
+                  b.content AS title
+              FROM
+                  bs_comment b
+              WHERE
+                  b.create_by = #{uId}
+                  AND b.del_flag = '0'
+              ) y
+              JOIN (
+              SELECT
+                  c.post_id AS commentId,
+                  c.create_by AS userId,
+                  '评论' AS behaviorType,
+                  c.content AS content,
+                  c.create_date AS createTime
+              FROM
+                  bs_comment c
+              WHERE
+                  c.del_flag = '0' UNION ALL
+              SELECT
+                  d.ref_id AS commentId,
+                  d.create_by AS userId,
+                  '点赞' AS behaviorType,
+                  '' AS content,
+                  d.create_date AS createTime
+              FROM
+                  bs_like d
+              WHERE
+                  d.del_flag = '0'
+              ) f ON y.id = f.commentId
+              LEFT JOIN ( SELECT NAME AS userName, id AS id FROM bs_user WHERE del_flag = '0' ) s ON f.userId = s.id
+        UNION ALL
+        SELECT
+            n.id AS id,
+            '' AS ownInfoType,
+            '' AS title,
+            n.post_id AS commentId,
+            m.id AS userId,
+            m.userName AS userName,
+            n.content AS content,
+            '消息' AS behaviorType,
+            n.create_date AS createTime
+        FROM
+            bs_comment n  LEFT JOIN ( SELECT NAME AS userName, id AS id FROM bs_user WHERE del_flag = '0' ) m ON n.create_by = m.id
+        WHERE
+            n.del_flag = '0' and n.content like '%${uName}%' or n.content like '%所有人%'
+    </select>
+</mapper>

@@ -1,0 +1,453 @@
+@charset "utf-8";
+/*common*/
+em,cite,i{font-style:normal;}
+.mb10{margin-bottom:10px;}
+.mb15{margin-bottom:15px;}
+.centess{margin:0 auto; width:990px; overflow:hidden; background:#fff;}
+.clr{clear:both;}
+p{font-size:12px;line-height:18px;}
+h4{font-family:"黑体";letter-spacing:-1px;}
+*.noLine,dl.noLine{border-bottom:none;}
+
+/**/
+.reply_tit_left span,.reply_tit_left address{float:left;}
+.reply_tit_left span.name{font-size:12px;}
+.reply_tit_left span.name a{color:#326496;}
+.reply_tit_left span.name a:hover{color:#eb8c14}
+.reply_tit_left address.city{font-style:normal;margin-left:10px;color:#969696}
+
+/*ad*/
+.index_left_ad{text-align:center; padding-bottom:15px;margin:0 auto;}
+.index_right_ad{margin-bottom:15px;}
+.ad_marginTop{ padding-top:0; margin-bottom:15px;}
+.ad_760{ width:760px; margin:0 auto;}
+.bottom_tong_ad{margin:0 auto;text-align:center;padding-bottom:15px;width:990px; clear:both;}
+.pic_top_tong_ad{margin:0 auto;text-align:center;padding:15px 0 5px 0;width:990px;}
+
+/**/
+.leftbox{float:left;width:680px;}
+.leftboxTop{margin-bottom:8px;overflow:hidden;zoom:1;background:url(http://file.caixin.com/file/channel/images/bg_leftBox.gif) no-repeat left bottom;}
+.comMainCon{margin:0 auto;width:990px; overflow:hidden; zoom:1;}
+.comMainConlf{float:left;padding-right:10px;width:325px;}
+.comMainConmid{float:left;width:345px;}
+.comMainConri{float:right;width:300px;}
+
+/*栏目共用*/
+.tit_lm {padding:0px 20px 0px 0px;height:28px;background:url(http://file.caixin.com/file/homepage/images/new/bg_tit_lm.gif) no-repeat right;font-family:"微软雅黑";font-size:14px; letter-spacing:-1px; font-weight:bold; color:#131d27; border-bottom:0; margin-bottom:0;overflow:hidden;zoom:1;}
+.tit_lm span{display:block;float:left;height:24px;padding:4px 0px 0px 15px;background:url(http://file.caixin.com/file/homepage/images/new/bg_tit_lm.gif) no-repeat left;color:#131d27;}
+.tit_lm b{display:block;float:right;height:24px;padding:2px 0px 0px 15px;color:#D2D2D2;font-family: "楷体_GB2312";}
+.tit_lm span a:link,.tit_lm span a:visited{color:#131d27;}
+.tit_lm span a:hover,.tit_lm span a:active{color:#EB8C14;}
+.tit_lm em{display:block;float:right;height:24px;padding:4px 0px 0px 15px;color:#369;font-family: "宋体";font-size:12px;font-weight:normal;}
+.tit_lm em a:link,.tit_lm em a:visited{color:#369;}
+.tit_lm em a:hover,.tit_lm em a:active{color:#EB8C14;}
+.lm_bottom {padding:0px 15px 0px 0px;height:13px;background:url(http://file.caixin.com/file/homepage/images/new/bg_lm_bottom.gif) no-repeat right; overflow:hidden; vertical-align:top;}
+.lm_bottom span{display:block;height:13px;padding:0px 0px 0px 15px;background:url(http://file.caixin.com/file/homepage/images/new/bg_lm_bottom.gif) no-repeat left; overflow:hidden;}
+.lmMargin{ margin-bottom:7px;}
+.lmConPadding{ padding:0 8px 0 8px;}
+.op{overflow:hidden; zoom:1;color:#858585;}
+.op a:link,.op a:visited{color:#369}
+.op a:hover,.op a:active{color:#EB8C14}
+.op .comments{display:block;float:left;padding-left:0px;}
+.op .meta {float:right;}
+.op em{font-style:normal;}
+.demolNews{padding:4px 10px;background:url(http://file.caixin.com/file/homepage/images/new/bg_con.gif) repeat-x top;}
+.demolNews dl{padding:8px 5px;border-bottom:1px dotted #ccc;}
+.demolNews dt{font-size:18px;line-height:24px;font-family:"黑体";letter-spacing:-1px;}
+.demolNews span{display:block;font-size:12px;font-weight:normal;font-family:"宋体";color:#858585;letter-spacing:0px;}
+.demolNews span a:link,.demolNews span a:visited{color:#369;}
+.demolNews span a:hover,.demolNews span a:active{color:#EB8C14;}
+.demolNews ul{padding:5px 0px 0px;line-height:24px;overflow:hidden;zoom:1;}
+.demolNews li{padding-left:15px;background:url(http://file.caixin.com/file/common/images/dot.jpg) no-repeat 5px 8px;font-size:14px;}
+.demolNews .noLine{border-bottom:none;}
+
+/*上标题&下图+文*/
+.stitXtuwen{padding:4px 10px;background:url(http://file.caixin.com/file/homepage/images/new/bg_con.gif) repeat-x top;}
+.stitXtuwen dl{padding:10px 5px;border-bottom:1px dotted #cccccc; margin-bottom:-1px; overflow:hidden;}
+.stitXtuwen h4{font-size:18px;line-height:24px;font-weight:normal;}
+.stitXtuwen dd{overflow:hidden;zoom:1;}
+.stitXtuwen .pic{float:left;margin-right:10px;text-align:center;padding:1px;border:1px solid #cbcbcb;}
+.stitXtuwen .pic img{width:48px; height:48px;}
+.stitXtuwen dl.noLine{border-bottom:none;}
+/*上图+标题&下文*/
+.stutitXwen{padding:4px 10px;background:url(http://file.caixin.com/file/homepage/images/new/bg_con.gif) repeat-x top;}
+.stutitXwen dl{padding:8px 5px;border-bottom:1px dotted #cccccc;}
+.stutitXwen dl h4{font-size:18px;line-height:24px;font-weight:normal;}
+.stutitXwen dd{overflow:hidden;zoom:1;}
+.stutitXwen .pic{float:left;padding-right:8px;}
+.stutitXwen dl span{display:block;}
+.stutitXwen dl span a{padding-right:20px;}
+.stutitXwen li{font-size:14px; background:url(http://file.caixin.com/file/common/images/dot.jpg) no-repeat left 8px; padding:0 0 3px 10px;border:none;}
+.stutitXwen li span {text-align:left; color:#858585;}
+.stutitXwen dl.noLine{border-bottom:none;}
+.stutitXwen span b{font-size:14px;}
+.stutitXwen span b a:link,.stutitXwen span b a:visited{ color:#369; }
+.stutitXwen span b a:hover,.stutitXwen span b a:active{ color:#eb8c14;}
+
+/*左图&右文*/
+.ltuRwen{padding:4px 10px;background:url(http://file.caixin.com/file/homepage/images/new/bg_con.gif) repeat-x top;}
+.ltuRwen li{padding:8px 5px;border-bottom:1px dotted #cccccc;overflow:hidden;zoom:1;}
+.ltuRwen li.noLine{border-bottom:none;}
+.ltuRwen .pic{float:left;margin-right:10px;}
+.ltuRwen h4{font-size:18px;line-height:24px;font-weight:normal;}
+
+/*频道头条*/
+.TopNews{padding-bottom:8px;overflow:hidden;zoom:1;}
+.TopNewslf{float:left;width:680px;}
+.TopNewsri{float:right;width:300px;}
+.TopNews .tit_lm{height:24px;background:url(http://file.caixin.com/file/channel/images/bg_tit_topnews2.gif) no-repeat right;color:#fff;}
+.TopNews .tit_lm span{height:22px;background:url(http://file.caixin.com/file/channel/images/bg_tit_topnews2.gif) no-repeat left;padding:2px 0px 0px 15px;color:#fff;}
+.TopNews .tit_lm a:link,.TopNews .tit_lm a:visited{color:#fff;}
+.TopNews .tit_lm a:hover,.TopNews .tit_lm a:active{color:#EB8C14;}
+.headNews{overflow:hidden; zoom:1;height:195px;padding:10px 10px 0 10px;border-left:1px solid #ccc;border-right:1px solid #ccc;background:#fff url(http://file.caixin.com/file/homepage/images/new/bg_con.gif) repeat-x top;}
+.picNews{float:left;margin-right:10px;position:relative;}
+.picNewsTit{position:absolute;left:4px;bottom:4px;width:266px;height:28px;background:rgba(0, 0, 0, 0.8) none repeat scroll 0 0 !important;/*实现FF背景透明，文字不透明*/filter:Alpha(opacity=80); background:#000000;/*实现IE背景透明*/overflow:hidden;}
+.picNews h4{padding:7px 17px;background: url(http://file.caixin.com/file/channel/images/arrow_white.gif) no-repeat 6px 10px;font-size:14px;font-weight:normal;font-family:"宋体";}
+.picNews h4 a:link,.picNews h4 a:visited{color:#fff;}
+.picNews h4 a:hover,.picNews h4 a:active{color:#EB8C14;}
+.picNews img{width:266px; height:177px; border:1px solid #e4e2e3; padding:3px; background:#f6f4f5;}
+.headNews .demolNews{background:none;padding:0px;height:250px;overflow:hidden;}
+.headNews dl{padding:0 5px 3px; margin-bottom:6px;}
+.headNews dl span{padding:2px 0px 2px;font-size:12px;font-family:"宋体"; font-weight:normal;}
+.headNews dt{overflow:hidden; font-size:20px;font-weight:bold; letter-spacing:-0.5px; line-height:110%;font-family:"微软雅黑";}
+.headNews li a:link,.headNews li a:visited{color:#369;}
+.headNews li a:hover,.headNews li a:active{color:#EB8C14;}
+/*推荐*/
+.tuijianCon{overflow:hidden;height:205px;padding:0px 10px;border-left:1px solid #ccc;border-right:1px solid #ccc;background:#fff url(http://file.caixin.com/file/homepage/images/new/bg_con.gif) repeat-x top;}
+.tuijianCon li{padding:10px 0px 5px 0px; border-bottom:1px dotted #ccc;}
+.tuijianCon li.noLine{border-bottom:none;}
+.tuijianCon li h4{ font-size:14px; font-family:"宋体"; overflow:hidden;zoom:1;}
+.tuijianCon li .pic{ float:left; margin-right:10px;}
+.tuijianCon li .pic img{ width:75px; height:50px; padding:1px; border:1px solid #ccc;}
+.tuijianCon h4 a:link,.tuijianCon h4 a:visited{ color:#131d27;}
+.tuijianCon h4 a:hover,.tuijianCon h4 a:active{ color:#eb8c14;}
+.tuijianCon dl{ padding:5px 0px 5px; border-bottom:1px dotted #ccc;}
+.tuijianCon dt{font-size:14px; font-weight:bold;font-family:"宋体"; }
+.tuijianCon dt span{ font-size:12px; font-weight:normal;}
+.tuijianCon dl.noLine{border:none;}
+
+/*焦点*/
+.focus{margin-bottom:8px;}
+.focusCon{padding:0px 1px;border-left:1px solid #ccc;border-right:1px solid #ccc;}
+.focusCon .pic{text-align:center;}
+.focusCon .pic img{border:1px solid #ccc; padding:1px; width:266px; height:120px;}
+.focusCon .demolNews{background-color:#f5f3f4;}
+.focusCon .demolNews p{font-family:"楷体_GB2312";font-size:14px;}
+.seriesSortTit{ background:url(http://file.caixin.com/file/channel/images/titbgline.gif) repeat-x left 3px; padding-left:10px; margin-top:10px;}
+.seriesSortTit i{ font-size:14px; font-weight:bold; color:#369; background:#F5F3F4; font-style:normal; padding-right:3px;}
+.seriesSortTit i a:link,.seriesSortTit i a:visited{text-decoration:none;color:#369;}
+.seriesSortTit i a:active,.seriesSortTit i a:hover{text-decoration:none;color:#EB8C14;}
+.focusCon ul{margin-bottom:10px;padding:15px 0px 10px;border-bottom:1px dotted #ccc; padding-bottom:5px;overflow:hidden;zoom:1;}
+.focusCon ul li{ float:left;padding:0px 6px;width:134px;background:none;}
+.focusCon li img{margin-bottom:5px;width:130px; height:87px; border:1px solid #ccc; padding:1px;}
+.focusCon ul p{ display:block; font-size:14px;}
+.more{padding:0px 5px;color:#5e5e5e;}
+.more a:link,.more a:visited{color:#5e5e5e;}
+.more a:hover,.more a:active{color:#eb8c14;}
+
+/*频道通用*/
+.channelBox{margin-bottom:8px;}
+.channelBoxCon{padding:0px 1px;border-left:1px solid #ccc;border-right:1px solid #ccc;overflow:hidden;zoom:1;}
+.channelBoxCon .demolNews .pic img{padding:1px;background:#fff;width:266px;height:177px;border:1px solid #cbcbcb;}
+
+/*热点专题*/
+.hotTopic{margin-bottom:8px;}
+.hotTopic .demolNews{padding:4px 5px;}
+.hotTopicCon{padding:0px 1px;border-left:1px solid #ccc;border-right:1px solid #ccc;overflow:hidden;zoom:1;}
+.hotTopicCon ul{overflow:hidden;zoom:1; margin:10px 0px 5px; border-bottom:1px dotted #ccc; padding-bottom:5px;}
+.hotTopicCon .demolNews li{float:left;padding:0px 0px 0px 7px;background:none;}
+.hotTopicCon .tuijianMsg i{display:block;padding:0px 10px;font-size:14px; font-weight:normal; line-height:170%;font-style:normal;}
+.hotTopicCon li img{ width:130px; height:87px; border:1px solid #ccc; padding:1px;}
+.hotTopicCon ul em{ display:block; font-size:14px;width:134px;}
+
+/*分享*/
+.share{ width:277px; height:112px; background:url(http://file.caixin.com/file/vip/images/share_bg2.gif) no-repeat; padding:7px 10px 0 13px; margin-bottom:8px;}
+.share ul{ overflow:hidden; zoom:1; padding:10px 0 9px;}
+.share li{float:left; width:42px; height:44px; padding:0 2px;}
+.share li a{display:block; width:42px; height:44px; cursor:pointer;}
+.share li a:hover{ cursor:pointer; margin-top:-4px;}
+.share li i{ display:none;}
+.share .sina a{background:url(http://file.caixin.com/file/vip/images/share_sina.png) no-repeat 0 0;}
+.share .qq a{background:url(http://file.caixin.com/file/vip/images/share_qq.png) no-repeat 0 0;}
+.share .rss a{background:url(http://file.caixin.com/file/vip/images/share_rss.png) no-repeat 0 0;}
+.share .heimei a{background:url(http://file.caixin.com/file/vip/images/share_heimei.png) no-repeat 0 0;}
+.share .anzhuo a{background:url(http://file.caixin.com/file/vip/images/share_anzhuo.png) no-repeat 0 0;}
+.share .iphone a{background:url(http://file.caixin.com/file/vip/images/share_iphone.png) no-repeat 0 0;}
+.share p { overflow:hidden; zoom:1;}
+.share p input { padding:0; border:0; margin:0; vertical-align:top;}
+.share p input.txt { width:114px; height:22px; line-height:22px; background:url(http://file.caixin.com/file/vip/images/share_input.gif) no-repeat; padding-left:5px; margin-right:5px; color:#bfbfbf; font-size:12px; outline-style:none;}
+.share p input:focus.txt { color:#131d27;}
+.share dl { float:right; padding-left:8px; border-left:solid 1px #cccacb; margin-top:5px; text-align:center;}
+.share dt { padding-bottom:5px; font-size:14px; line-height:12px; _line-height:14px; font-weight:bold; font-family:"微软雅黑"; color:#7a7879;}
+.share dd { line-height:0;}
+
+/*排行榜*/
+.top10{margin-bottom:8px;}
+.plblTopNav{padding:2px 1px 0px;height:26px;background:url(http://file.caixin.com/file/common/images/ico/ico.png) no-repeat 0 -415px;overflow:hidden;zoom:1;}
+.plblTopNav ul{padding:0px;}
+.plblTopNav li{float:left;padding-top:2px;margin-right:12px;width:91px;height:21px;text-align:center;font-size:14px;font-family:"微软雅黑";font-weight:bold; cursor:pointer;}
+.plblTopNav li.current{background:url(http://file.caixin.com/file/common/images/ico/ico.png) no-repeat 0 -99px;}
+.plblTopNav li a:link,.gonggaoNav li a:visited{color:#37485c;}
+.plblTopCon{padding:0px 1px;border-left:1px solid #ccc;border-right:1px solid #ccc;}
+.plblTopCon div{padding:10px 5px 4px;background:url(http://file.caixin.com/file/homepage/images/new/bg_con.gif) repeat-x top;}
+.plblTopCon dl{padding:0px 3px 0px 0px;overflow:hidden; zoom:1;}
+.plblTopCon dt {margin-right:5px;float:left;display:inline; width:25px; line-height:21px; text-align:center; font-family:Arial; font-weight:bold; color:#979797;}
+.plblTopCon dd{overflow:hidden; zoom:1;}
+.plblTopCon dd h4 {font-size:12px;font-family:"宋体";line-height:21px;font-weight:normal; letter-spacing:0px; color:#858585;}
+.plblTopCon dd h4 span{display:inline;color:#858585;}
+
+/*博客*/
+.blogCon{padding:0px 1px;background:#fff;border-left:1px solid #ccc;border-right:1px solid #ccc;overflow:hidden;zoom:1;}
+.blogCon .stutitXwen dl{float:left;margin-right:10px;width:305px;}
+.blogConLf{float:left;width:325px;overflow:hidden;}
+.blogConRi{float:right;width:325px;overflow:hidden;}
+.blog .stutitXwen{background-image:none;padding:4px 5px;overflow:hidden;zoom:1;}
+.blogCon .pic img{padding:1px;border:1px solid #cbcbcb;}
+.blog .noLine{background:none;}
+
+/*商业模式*/
+.syms{margin-bottom:8px;}
+.symsCon{padding:0px 1px;border-left:1px solid #ccc;border-right:1px solid #ccc;}
+.symsCon .demolNews .pic img{padding:1px;background:#fff;width:266px;height:177px;border:1px solid #cbcbcb;}
+
+/*公司频道推荐*/
+.channelTj{margin-bottom:8px;}
+.channelTjCon{padding:0px 1px;border-left:1px solid #ccc;border-right:1px solid #ccc;}
+.channelTjCon dt,.channelTjCon h4{font-size:14px;font-weight:bold; font-family:"宋体";}
+.channelTj .stitXtuwen{background:none;padding:4px 0px;}
+.channelTjCon .stitXtuwen .pic a{ display:block; width:75px;height:50px; background:#131d27; text-align:center;}
+.channelTjCon .stitXtuwen .pic{float:left;margin-right:10px;padding:1px;border:1px solid #cbcbcb;width:75px;height:50px;}
+.channelTjCon .stitXtuwen .pic img { width:auto; height:auto;}
+
+/*投票*/
+.toupiao{margin:0px 0 8px 0;}
+.toupiaoCon{padding:0px 1px;border-left:1px solid #ccc;border-right:1px solid #ccc;}
+.toupiaoCon .demolNews dl{padding:8px 0px 4px;border-bottom:none;}
+.toupiaoCon ul{padding:0px 0px 5px 48px;overflow:hidden;zoom:1;}
+.toupiaoCon li{float:left;padding:1px 35px 0px 3px;width:63px;height:30px;background:url(http://file.caixin.com/file/homepage/images/new/btn_toupiao.gif) no-repeat;border:none;text-align:center;}
+.toupiaoCon li a:link,.toupiaoCon li a:visited{color:#fff}
+.toupiaoCon li a:hover,.toupiaoCon  li a:active{color:#EB8C14}
+
+/*焦点*/
+.focus .lm_bottom {background:url(http://file.caixin.com/file/channel/images/bg_fouce_bottom.gif) no-repeat right;}
+.focus .lm_bottom span{background:url(http://file.caixin.com/file/channel/images/bg_fouce_bottom.gif) no-repeat left;}
+
+/*------------------列表页公用部分----------------*/
+/*小导航*/
+.crumbs{border-bottom:1px dotted #CDCDCD; padding:2px 10px 8px;color:#858585;height:15px;}
+.crumbs a:link,.crumbs a:visited{color:#858585;}
+.crumbs a:hover,.crumbs a:active{color:#eb8c14}
+
+/*pageNav*/
+.pageNav{padding:20px 0 10px;text-align:center; clear:both; zoom:1;}
+.pageNav input{ vertical-align:middle;margin:0 5px;color:#170e45;font-size:12px;}
+.pageNav a:link,.pageNav a:visited{margin:0 5px;color:#170e45;}
+.pageNav a:hover{color:#170e45;}
+.pageNav span{padding:0 5px 0; vertical-align:top; height:25px;line-height:25px;display:inline-block;font-size:12px; font-family:Arial;}
+.pageNav span em{color:#406e9d;}
+.pageNav .pageInp{width:18px;height:16px;border-left:1px solid #ccc;border-top:1px solid #ccc;border-right:1px solid #efefef;border-bottom:1px solid #efefef; text-align:center;}
+.pageNavBtn,.pageNav .pageNavBtnGo{color:#4b4b4b;height:30px;border:0;display:inline-block;overflow:hidden;}
+.pageNav .pageNavBtn,.pageNav .pageNavBtn1,.pageNav .pageNavBtn2,.pageNav .pageNavBtn3{ display:inline-block;overflow:hidden;width:61px;height:30px; line-height:23px;border:0;vertical-align:top;background:url(http://file.caixin.com/file/common/images/pageNavBtnbg.gif) no-repeat; text-align:center; font-size:12px;}
+.pageNav .pageNavBtnGo{background:url(http://file.caixin.com/file/common/images/pageNavBtnGo.gif) no-repeat;width:50px;vertical-align:top;border:0;font-size:0;line-height:0;overflow:hidden;}
+
+/*当日快讯*/
+.todayKx{ margin-bottom:7px;}
+.todayKxCon{padding:0px 1px;border-left:1px solid #ccc;border-right:1px solid #ccc;overflow:hidden;zoom:1;}
+.todayKxCon ul { padding:7px 10px 0;}
+.todayKxCon li {background:url(http://file.caixin.com/file/international/images/img_09.gif) no-repeat 0 9px;padding-left:9px;line-height:21px; zoom:1; font-size:14px;}
+.todayKxCon li a:link,.todayKxCon li a:visited { color:#000;}
+.todayKxCon li a:hover,.todayKxCon li a:active { color:#EB8C14;}
+.todayKxCon li span{color:#858585;display:inline;font-size:12px;}
+
+/**评论内容*/
+.commentInfo{padding:0 15px;font-size:14px;overflow:hidden;zoom:1;}
+.commentInfo .pageNav { padding:10px 0 0; text-align:right;}
+*html .commentInfo{padding:10px 15px 0px 15px;}
+*+html .commentInfo{padding:10px 15px 0px 15px;}
+.commentInfolf{float:left;color:#326496;}
+.comment span{display:inline;}
+.comment .lm_bottom span{display:block;}
+#commentBox{display:block;margin-bottom:0px;padding:0px 1px;border-left:1px solid #ccc;border-right:1px solid #ccc;zoom:1;}
+.commentInfori{float:right;color:#4b4b4b;}
+.commentInfori span{padding:0px 0px 0px 0px;}
+.commentInfori input{width:79px;height:27px;border:none;font-size:14px;background:url(http://file.caixin.com/file/content/images/bg_btn.gif) no-repeat;font-weight:normal;color:#fff; cursor:pointer;}
+.commentTxt span.commentHotIcon{ margin:-2px 0 0 2px;}
+.comment{padding-bottom:5px;background:url(http://file.caixin.com/file/content/images/bg_con.gif) repeat-x top; zoom:1;}
+.comment .tit{border-bottom:solid 3px #700605;padding:0 0 0px 15px; height:22px; margin-bottom:2px;font-size:14px;font-family:"微软雅黑";font-weight:bold;color:#303135;}
+.commentTxt{background:#F6F4F5; zoom:1;}
+.nobg{background:#fff;}
+.commentTxt dt{padding:10px 15px 0px;line-height:60px;}
+.commentTxt dt .right{ line-height:18px; zoom:1;}
+.commentTxt dt .right h2{ font-size:12px; font-weight:normal;}
+.commentTxt dt .info{ display:inline; padding:1px 0px 0px;font-size:12px;}
+.commentTxt dt .info img { vertical-align:middle;}
+.commentTxt dt p { display:inline;}
+.commentTxt span.num{font-size:40px; font-family:Arial;color:#bababa;padding-right:5px;}
+.commentTxt a.pic{ position:absolute; z-index:20; bottom:15px; left:-15%; _left:0px; _top:-78px; display:none; width:70px; height:68px; background:url(http://file.caixin.com/file/content/images/pic_bg.gif) no-repeat; text-align:center; padding-top:12px;}
+.commentTxt span.name{font-size:12px;}
+.commentTxt span.name a{color:#326496;}
+.commentTxt span.name a:hover{color:#eb8c14}
+.commentTxt address.city{ display:inline-block; float:left; height:16px; line-height:16px; font-size:12px; margin-left:15px; color:#969696; font-style:normal;}
+.commentTxt cite.time { display:inline-block; float:left; height:16px; line-height:16px; font-size:12px; color:#969696;}
+.reply_tit_left span.name { display:inline-block; float:left; height:24px; line-height:24px; font-size:12px;}
+.reply_tit_left address.city { height:24px; line-height:24px; }
+.commentTxt dd{padding:0px 15px 0px;font-size:14px;line-height:24px;color:#000;}
+.comment #contentArea .dis { display:block;}
+.comment #contentArea .undis { display:none;}
+.comment .tit_lm span { float:none; display:block; font-family:"宋体"; font-weight:normal; font-size:12px; overflow:hidden; zoom:1; letter-spacing:0px;}
+.comment .tit_lm a { float:right;}
+.comment .tit_lm ul { float:left; overflow:hidden;}
+.comment .tit_lm li { float:left; width:100px; height:21px; line-height:21px; cursor:pointer; text-align:center;}
+.comment .tit_lm li.hovertab { background:#163B8A; color:#ffffff; border-radius:5px 5px 0 0;}
+
+/**评论按钮*/
+.c_btn {padding:7px 0; text-align:right; overflow:hidden; zoom:1;}
+.c_btn .c_hf,.c_zc,.c_fd{ float:right; display:inline-block; height:16px; line-height:16px; margin-left:15px; padding-left:15px; font-size:12px;color:#4a657d; }
+.c_btn .c_hf { padding:0;}
+.c_btn .c_zc{ background:url(http://file.caixin.com/file/content/images/c_zc2.gif) no-repeat;}
+.c_btn .c_fd{ background:url(http://file.caixin.com/file/content/images/c_fd2.gif) no-repeat;}
+.c_btn span span{font-weight:normal;}
+.c_btn a:link,.c_btn a:visited { color:#4a657d;}
+.c_btn a:hover,.c_btn a:active { color:#eb8c14;}
+/**评论回复*/
+.comment_hf{background:#f5f5f5; border-radius:6px;}
+.comment_hf .comment_hf_tit{height:41px;background:#e5e4e9;padding:0 10px;}
+.comment_hf_tit .left{float:left;line-height:41px;font-size:12px;}
+.comment_hf_tit .right{float:right;padding-top:8px;}
+.comment_hf_tit .right .inp{ background:url(http://file.caixin.com/file/content/images/c_btn.jpg) no-repeat;width:63px;height:25px;border:0;color:#fff; cursor:pointer;}
+.tex{border:1px solid #dadada;background:#fff;width:95%;height:90px; padding:5px;margin:0px 0px 0px 10px;font-size:12px; color:#858585;}
+textarea:focus.tex { color:#000000;}
+.comment_hf .cite{padding:5px 14px 4px 10px;color:#969696;font-size:12px; clear:both;height:28px;}
+.comment_hf .cite span{padding:6px 10px 0; float:right; color:#858585;}
+.comment_hf .cite span a:link,.comment_hf .cite span a:visited { color:#bbbbbb;}
+.comment_hf .cite span a:hover,.comment_hf .cite span a:active { color:#eb8c14;}
+.reply_tit_left{ float:left;}
+.overFlow{ zoom:1;}
+.commentInput{background:url(http://file.caixin.com/file/content/images/bg_btn.gif) no-repeat;width:79px;height:27px;border:0;color:#fff; cursor:pointer; float:right; border:none;}
+
+/**回复内容*/
+.reply{border:1px solid #ccc; background:#fff;padding:6px;font-size:12px;margin-bottom:3px;}
+.reply .reply_tit{font-size:14px;padding-bottom:5px;}
+.reply .num{text-align:right;color:#969696}
+/*发表评论*/
+.fbplTit{margin-top:15px;padding:10px 12px 0px 12px;height:50px;}
+.fbplTit .pic{float:left;margin-right:10px;background:url(http://file.caixin.com/file/content/images/commentpic.gif) no-repeat;width:48px;height:48px;padding:3px 3px 3px 3px;}
+.fbplTit .pic img{width:48px;height:48px;}
+.fbplTit span{display:block;float:left;padding:20px 0px 0px 0px;}
+.fbplTit span b{display:block;float:left;padding:0px 0px 0px 18px;}
+.fbplTit .right{float:right;padding-top:15px;}
+.inp{background:url(http://file.caixin.com/file/content/images/c_btn.jpg) repeat-x;width:83px;height:25px;border:0;color:#fff; cursor:pointer; float:right; border:solid 1px #fff;}
+
+/*微新闻*/
+.lailunCon{padding:0px 10px 0 10px;}
+.unlight span{ color:#000;}
+.unlight span a:link,.unlight span a:visited{ color:#131d27;}
+.unlight span a:hover,.unlight span a:active{ color:#eb8c14;}
+.stampb span{ display:inline;}
+.stampb .op{ color:#369; float:right;}
+.stampb .op a:link,.stampb .op a:visited{ color:#369;}
+.stampb .op a:hover,.stampb .op a:active{ color:#eb8c14;}
+.unlight{ border-bottom:1px dotted #ccc; padding:15px 0 10px;}
+.stampb{ overflow:hidden;zoom:1;width:255px;}
+.stampb .ctime{ float:left;}
+.content b a:link,.content b a:visited{ color:#369;}
+.content b a:hover,.content b a:active{ color:#eb8c14;}
+
+.cx-login{overflow:hidden;zoom: 1;border-bottom:1px solid #ccc ;margin: 35px 0 30px;}
+.cx-login img{width: 90px;float: left;margin:0 10px 0 0 ;}
+.cx-login span{display: block;font-size: 22px;color: #8f95b7;padding: 28px 0 0;}
+.login-list{padding: 20px 0 10px 0;width: 320px;margin: 0 auto;}
+.login-list li{font-size: 18px;line-height: 160%;/*border-bottom:1px solid #EDEDED ;*/padding: 10px 0 15px 0; overflow: hidden;zoom: 1;}
+/*.login-list li:last-child{border-bottom:0 ;}*/
+.login-list li span{padding: 0 0 0 30px;display: block;float: left;margin-right:35px;}
+.login-list li p{padding: 13px 10px 0 0;font-size: 18px;}
+.login-list li span img{width: 56px;}
+.weixin p{color: #00cd0d;}
+.weibo p{color: #ffa31f;}
+.qq p{color: #0eb8f6;}
+.phone p{color: #8f93b7;}
+div.regist-phone,div.regist-email{margin-top: 40px;}
+.login-other{text-align: center;padding: 0 0 20px 0;margin: 30px 0 30px;}
+/*.quick{color: #0095ff;font-size: 15px;margin: 0 0 16%;}*/
+.free-read{font-size: 14px;color: #a1a1a1;}
+.regist{font-size: 18px;margin: 20px 0 0;color: #A1A1A1;}
+.regist span{padding: 0 0 0 5px;}
+.regist span,.regist span a{color: #0095ff;}
+.phone-login{width: 320px;margin: 0 auto;}
+.phone-login p{font-size: 18px;color: #A1A1A1;border-bottom:1px solid #ccc ;padding: 0 0 10px 0;margin: 30px 0 0 0;}
+.phone-login p input{height: 20px;line-height:20px ;width: 200px;font-size: 18px;font-weight: 300;}
+.phone-login span{font-size: 14px;color: #0095ff;display: block;text-align: right;}
+.phone-login span a{color: #0095ff;}
+.login-btn{font-size: 20px;color: #fff;height: 40px;line-height:40px;background: #4cb5ff;text-align: center;margin: 50px 0 10px 0;}
+
+/*登录弹出*/
+#bg{width:100%;height:100%;top:0px;left:0px;position:absolute;filter:Alpha(opacity=50);opacity:0.5;background:#000;display:none;z-index: 1100;}
+#popbox{position:fixed;width:550px;height:640px;left:50%;top:50%;margin:-320px 0 0 -275px;background:#FFF;z-index: 1200;border-radius: 10px;}
+.popup-con{width: 285px;margin: 0 auto;}
+.tit-login{font-size: 24px;line-height: 160%;text-align: center;margin: 20px 0 30px 0;}
+.close-box{position: relative;}
+.close-box p{position: absolute;z-index: 1210;right: -15px;top: -15px;cursor: pointer;}
+.close-box p img{width: 33px;}
+.weixin p{color: #00cd0d;}
+.weibo p{color: #ffa31f;}
+.qq p{color: #0eb8f6;}
+.phone p{color: #8f93b7;}
+.sjzh{font-size: 18px;color: #0095ff;line-height: 160%;text-align: center;margin: 0 0 60px 0;}
+.sjzh a{color: #0095FF;}
+
+.loginbgFiexd{
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    filter: Alpha(opacity=50);
+    opacity: 0.5;
+    background: #000;
+    z-index: 1100;
+    display: none;
+}
+.loginpopboxFiexd{
+    position: fixed;
+    width: 550px;
+    height: 640px;
+    left: 50%;
+    top: 50%;
+    margin: -320px 0 0 -275px;
+    background: #FFF;
+    z-index: 1000000;
+    display: none;
+    border-radius: 10px;
+}
+.login-loading {
+    width: 100%;
+    background: #00a0e9;
+    height: 45px;
+    line-height: 45px;
+    color: #ffffff;
+    font-size: 16px;
+    font-family: "微软雅黑";
+    text-align: center;
+    position: relative;
+    display: none;
+}
+.login-loading img {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 10px;
+    left: 35%;
+    z-index: 100;
+}
+
+#txz_popbox_end {
+    position: fixed;
+    z-index: 1000000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    filter: alpha(opacity=70);
+    opacity: .7
+}

@@ -1,0 +1,114 @@
+body {
+	margin: 0;
+	padding: 0;
+	background: #f4f3f4;
+}
+@media screen and (max-width: 780px) {
+	.main-all{
+		background: #FFFFFF;
+		margin:0 auto;
+	}
+	.main-content{
+		text-align: left;
+	}
+	.main-content-item{
+		margin: 0 0 20px 0;
+	}
+	.main-content-item:first-child{
+		padding-top: 20px;
+	}
+}
+@media screen and (min-width: 780px) {
+	.main-all {
+		width: 1140px;
+		background: #FFFFFF;
+		margin:0 auto;
+	}
+	.main-con{
+		width: 1120px;
+	}
+	.main-content{
+		text-align: left;
+	}
+	.main-content-item{
+		margin: 15px 0 -1px 0;
+		padding-bottom: 15px;
+		border-bottom: 1px solid #dcdcdc;
+	}
+}
+
+
+
+.nav-head{
+	text-align: left;
+}
+
+
+.main-head{
+	background-color: #28A0FC;
+	width: 100%;
+	height: 60px;
+	text-align: center;
+}
+
+.item-title{
+	color: #1283d5;
+	font-size: 18px;
+}
+.item-title:hover{
+	color: red;
+}
+
+.item-intro{
+	color: #b1b1b1;
+	font-size: 8px;
+	margin-bottom: 10px;
+}
+
+.weekly-item{
+	text-align: center;
+	margin-bottom: 0 20px 20px 20px;
+}
+.weekly-item:first-child{
+	padding-top: 20px;
+}
+
+.weekly-image{
+	width:130px;
+	height: 170px;
+}
+.weekly-title{
+	text-align: center;
+	margin-top: 20px;
+}
+.weekly-title-item{
+	font-family: "黑体";
+	font-size: 16px;
+	line-height: 24px;
+}
+.weekly-title-time{
+	font-size: 10px;
+	color:  #b1b1b1;
+}
+
+.no-data-container{
+	text-align: center;
+	color:#6d6d6d;
+}
+.no-data-ele-container{
+	color:red;
+	font-weight: bold;
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+.layui-tab{
+	float: left;
+}
+
+.article{
+	padding-top: 20px;
+}
+
+
+

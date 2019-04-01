@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.etc.dao.BsUserMapper">
+  	<sql id="bsUserCom">
+        a.id AS "id",
+		a.password AS "password",
+		a.name AS "name",
+		a.email AS "email",
+		a.phone AS "phone",
+		a.user_type AS "userType",
+		a.create_date AS "createDate",
+		a.remarks AS "remarks",
+		a.photo AS "photo",
+		a.del_flag AS "delFlag",
+		a.expire_date AS "expireDate"
+  	</sql>
+
+  	<insert id="insert">
+	  INSERT INTO bs_user(
+			id,
+			password,
+			name,
+			email,
+			phone,
+			user_type,
+			create_date,
+			remarks,
+			photo,
+			del_flag,
+			expire_date
+		) VALUES (
+			#{user.id},
+			#{user.password},
+			#{user.name},
+			#{user.email},
+			#{user.phone},
+			#{user.userType},
+			#{user.createDate},
+			#{user.remarks},
+			#{user.photo},
+			#{user.delFlag},
+			#{user.expireDate}
+		)
+	</insert>
+
+  	<select id="findUserByEmail"  resultType="com.etc.entity.BsUser">
+		select
+    	<include refid="bsUserCom" />
+    	from bs_user a
+    	where a.email = #{email}
+  	</select>
+
+	<update id="updateUserByEmail">
+		UPDATE bs_user SET
+			password = #{user.password},
+		WHERE email = #{user.email}
+	</update>
+
+	<update id="updateUserType">
+		UPDATE bs_user SET
+			user_type = #{user.userType},
+			expire_date = #{user.expireDate}
+		WHERE email = #{user.email}
+	</update>
+
+  	<select id="findList" resultType="com.etc.entity.BsUser">
+		select
+		<include refid="bsUserCom" />
+		from bs_user a
+  	</select>
+
+	<select id="getUserById" resultType="com.etc.entity.BsUser">
+		select
+		<include refid="bsUserCom" />
+		from bs_user a
+		where a.id = #{id}
+	</select>
+
+	<select id="getByName" resultType="com.etc.entity.BsUser">
+		select
+		<include refid="bsUserCom" />
+		from bs_user a
+		where a.id = #{name}
+	</select>
+</mapper>

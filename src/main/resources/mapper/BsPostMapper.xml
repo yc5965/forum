@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.etc.dao.BsPostMapper">
+
+
+  <sql id="bsPostColumns">
+		a.id AS "id",
+		a.title AS "title",
+		a.post_type AS "postType",
+		a.update_by AS "updateBy.id",
+		a.update_date AS "updateDate",
+		a.remarks AS "remarks",
+		a.del_flag AS "delFlag",
+		a.post_status AS "postStatus",
+		a.content AS "content",
+		a.post_tags AS "postTags",
+		a.create_by AS "createBy.id",
+		a.cover_img AS "coverImg",
+		a.create_date AS "createDate",
+		a.last_modifiy AS "lastModifiy",
+		a.sort AS "sort",
+		u.photo AS "createBy.photo",
+		u.name AS "createBy.name",
+		d.label as "postTypeLabel"
+	</sql>
+
+  <sql id="bsPostJoins">
+		LEFT JOIN bs_user u ON u.id = a.create_by and u.del_flag = '0'
+		LEFT JOIN bs_dict d ON d.value = a.post_type and d.del_flag = '0' and d.type = 'bs_post_type'
+	</sql>
+
+  <select id="get" resultType="BsPost">
+    SELECT
+    <include refid="bsPostColumns"/>
+    FROM bs_post a
+    <include refid="bsPostJoins"/>
+    WHERE a.id = #{id}
+  </select>
+
+  <select id="findList" resultType="BsPost">
+    SELECT
+    <include refid="bsPostColumns"/>
+    FROM bs_post a
+    <include refid="bsPostJoins"/>
+    <where>
+      a.del_flag = '0'
+      <if test="title != null and title != ''">
+        AND a.title LIKE
+        <if test="dbName == 'oracle'">'%'||#{title}||'%'</if>
+        <if test="dbName == 'mssql'">'%'+#{title}+'%'</if>
+        <if test="dbName == 'mysql'">concat('%',#{title},'%')</if>
+      </if>
+      <if test="postType != null and postType != ''">
+        AND a.post_type = #{postType}
+      </if>
+      <if test="postStatus != null and postStatus != ''">
+        AND a.post_status = #{postStatus}
+      </if>
+      <if test="createBy != null and createBy.id != null and createBy.id != ''">
+        AND a.create_by = #{createBy.id}
+      </if>
+    </where>
+    <choose>
+      <when test="page !=null and page.orderBy != null and page.orderBy != ''">
+        ORDER BY ${page.orderBy}
+      </when>
+      <otherwise>
+        ORDER BY a.update_date DESC
+      </otherwise>
+    </choose>
+  </select>
+
+  <select id="findAllList" resultType="BsPost">
+    SELECT
+    <include refid="bsPostColumns"/>
+    FROM bs_post a
+    <include refid="bsPostJoins"/>
+    <where>
+      a.del_flag = '0'
+    </where>
+    <choose>
+      <when test="page !=null and page.orderBy != null and page.orderBy != ''">
+        ORDER BY ${page.orderBy}
+      </when>
+      <otherwise>
+        ORDER BY a.update_date DESC
+      </otherwise>
+    </choose>
+  </select>
+
+  <insert id="insert">
+		INSERT INTO bs_post(
+			id,
+			title,
+			post_type,
+			update_by,
+			update_date,
+			remarks,
+			del_flag,
+			post_status,
+			content,
+			post_tags,
+			create_by,
+			cover_img,
+			create_date,
+			last_modifiy,
+			sort
+		) VALUES (
+			#{id},
+			#{title},
+			#{postType},
+			#{updateBy.id},
+			#{updateDate},
+			#{remarks},
+			#{delFlag},
+			#{postStatus},
+			#{content},
+			#{postTags},
+			#{createBy.id},
+			#{coverImg},
+			#{createDate},
+			#{lastModifiy},
+			#{sort}
+		)
+	</insert>
+
+  <update id="update">
+		UPDATE bs_post SET
+			title = #{bsPost.title},
+			post_type = #{bsPost.postType},
+			update_by = #{bsPost.createBy.id},
+			update_date = #{bsPost.updateDate},
+			remarks = #{bsPost.remarks},
+			post_status = #{bsPost.postStatus},
+			content = #{bsPost.content},
+			post_tags = #{bsPost.postTags},
+			cover_img = #{bsPost.coverImg},
+			last_modifiy = #{bsPost.lastModifiy},
+			sort = #{bsPost.sort}
+		WHERE id = #{bsPost.id}
+  </update>
+
+  <update id="delete">
+		UPDATE bs_post SET
+			del_flag = '1'
+		WHERE id = #{id}
+	</update>
+
+  <select id="findDetail" resultType="BsPost">
+    SELECT
+    <include refid="bsPostColumns"/>
+    ,b.commentCount AS commentCount
+    ,c.likeCount AS likeCount
+    ,d.viewCount AS viewCount
+    ,CASE when bl.ref_id is null then '0' else '1' end as isLike
+    FROM bs_post a
+    <include refid="bsPostJoins"/>
+    LEFT JOIN (select post_id,count(*) as commentCount from bs_comment bc where bc.del_flag = '0' group by post_id) b on b.post_id = a.id
+    LEFT JOIN (select ref_id,count(*) as likeCount from bs_like bl where bl.del_flag = '0' and bl.like_type = '0' group by ref_id) c on c.ref_id = a.id
+    LEFT JOIN (select post_id,count(*) as viewCount from bs_view bv where bv.del_flag = '0' group by post_id) d on d.post_id = a.id
+    LEFT JOIN (select ref_id,create_by from bs_like where del_flag = '0' and like_type = '0' group by ref_id,create_by) bl on bl.ref_id = a.id and bl.create_by = #{userId}
+    WHERE a.id = #{id}
+  </select>
+
+
+  <select id="findPosts" resultType="BsPost">
+    SELECT
+    <include refid="bsPostColumns"/>
+    ,b.commentCount AS commentCount
+    ,c.likeCount AS likeCount
+    ,d.viewCount AS viewCount
+    FROM bs_post a
+    <include refid="bsPostJoins"/>
+    LEFT JOIN (select post_id,count(*) as commentCount from bs_comment bc where bc.del_flag = '0' group by post_id) b on b.post_id = a.id
+    LEFT JOIN (select ref_id,count(*) as likeCount from bs_like bl where bl.del_flag = '0' and bl.like_type = '0' group by ref_id) c on c.ref_id = a.id
+    LEFT JOIN (select post_id,count(*) as viewCount from bs_view bv where bv.del_flag = '0' group by post_id) d on d.post_id = a.id
+    <where>
+      a.del_flag = '0'
+      <if test="createById != null and createById != ''">
+        AND a.create_by = #{createById}
+      </if>
+    </where>
+    ORDER BY a.create_date DESC
+    LIMIT ${pageStart}, ${pageSize}
+  </select>
+
+  <select id="getByPostStatus" resultType="BsPost">
+    SELECT
+    <include refid="bsPostColumns"/>
+    ,b.commentCount AS commentCount
+    ,l.likeCount AS likeCount
+    FROM bs_post a
+    <include refid="bsPostJoins"/>
+    LEFT JOIN (select post_id,count(*) as commentCount from bs_comment bc where bc.del_flag = '0' group by post_id)
+    b on b.post_id = a.id
+    LEFT JOIN (select ref_id,count(*) as likeCount from bs_like bl where bl.del_flag = '0' group by ref_id) l on
+    l.ref_id = a.id
+    where
+    a.del_flag = '0'
+    <if test='postStatus != null '>
+      and a.post_status = #{postStatus}
+    </if>
+    ORDER BY a.sort desc, a.last_modifiy DESC
+  </select>
+
+  <select id="findPageList" resultType="BsPost">
+    SELECT
+    <include refid="bsPostColumns"/>
+    ,b.commentCount AS commentCount
+    ,l.likeCount AS likeCount
+    FROM bs_post a
+    <include refid="bsPostJoins"/>
+    LEFT JOIN (select post_id,count(*) as commentCount from bs_comment bc where bc.del_flag = '0' group by post_id)
+    b on b.post_id = a.id
+    LEFT JOIN (select ref_id,count(*) as likeCount from bs_like bl where bl.del_flag = '0' group by ref_id) l on
+    l.ref_id = a.id
+    WHERE
+    a.del_flag = '0'
+    <if test='postStatus != null and postStatus != ""'>
+      and  a.post_status = #{postStatus}
+    </if>
+    <if test='postType != null and postType != ""'>
+      and a.post_type = #{postType}
+    </if>
+    <choose>
+      <when test='sortType != null and sortType !=""'>
+        ORDER BY a.sort desc, b.commentCount DESC
+      </when>
+      <otherwise>
+        ORDER BY a.sort desc, a.last_modifiy DESC
+      </otherwise>
+    </choose>
+    LIMIT ${pageStart}, ${pageSize}
+  </select>
+
+  <select id="findPageCount" resultType="java.lang.Integer">
+    SELECT
+    count(*)
+    FROM bs_post a
+    WHERE
+    a.del_flag = '0'
+    <if test='postStatus != null and postStatus != ""'>
+      and  a.post_status = #{postStatus}
+    </if>
+    <if test='postType != null and postType != ""'>
+      and a.post_type = #{postType}
+    </if>
+  </select>
+
+
+  <select id="findHostPost" resultType="BsPost">
+    SELECT
+    <include refid="bsPostColumns"/>
+    ,b.commentCount AS commentCount
+    FROM bs_post a
+    <include refid="bsPostJoins"/>
+    LEFT JOIN (select post_id,count(*) as commentCount from bs_comment bc where bc.del_flag = '0' group by post_id) b on b.post_id = a.id
+    LEFT JOIN (select ref_id,count(*) as likeCount from bs_like lc where lc.del_flag = '0' group by ref_id) l on l.ref_id = a.id
+    LEFT JOIN (select post_id,count(*) as viewCount from bs_view vc where vc.del_flag = '0' group by post_id) v on v.post_id = a.id
+    where a.del_flag = '0'
+    ORDER BY b.commentCount DESC,l.likeCount DESC,v.viewCount DESC
+    limit 0,5
+  </select>
+
+  <update id="updatePostLastModifyDate">
+        UPDATE bs_post SET
+			last_modifiy = #{LastModifyDate}
+		WHERE id = #{id}
+    </update>
+
+  <select id="findHotTagsBypostType" resultType="String">
+        SELECT
+        a.post_tags as postTags
+        from
+        bs_post a
+        where
+        a.post_type =#{postType}
+        and
+        a.del_flag = '0'
+    </select>
+
+  <select id="findUserPostCout" resultType="java.lang.Integer">
+    SELECT
+    count(*) as postCount
+    FROM bs_post a
+    <where>
+      a.del_flag = '0'
+      <if test="createById != null and createById !=''">
+        AND a.create_by = #{createById}
+      </if>
+    </where>
+  </select>
+
+
+
+
+
+
+
+
+</mapper>

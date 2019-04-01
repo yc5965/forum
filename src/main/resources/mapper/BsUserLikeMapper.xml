@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.etc.dao.BsUserLikeMapper">
+
+    <select id="findUserLike" resultType="bsUserLike">
+        SELECT
+	      id as id,
+	      content as content,
+	      createTime as createTime,
+	      likeCount as likeCount,
+	      likeType as likeType,
+	      commentId as commentId
+        FROM
+              ( SELECT ref_id FROM bs_like br WHERE br.del_flag = '0' AND  br.create_by = #{uId} ) d
+	          LEFT JOIN (
+	                SELECT
+                        a.id AS id,
+                        a.title AS content,
+                        a.create_date AS createTime,
+                        a.create_by AS createDy,
+                        '帖子' as likeType,
+                        '0' as commentId
+                    FROM
+                        bs_post a
+                    WHERE
+                        a.del_flag = '0'
+                    UNION ALL
+                    SELECT
+                        b.id AS id,
+                        b.content AS content,
+                        b.create_date AS createTime,
+                        b.create_by AS createDy,
+                        '评论' AS postTypeLabel,
+                        b.post_id AS commentId
+                    FROM
+                        bs_comment b
+                    WHERE
+                        b.del_flag = '0'
+	                ) f ON d.ref_id = f.id
+              LEFT JOIN
+              (SELECT
+                    ref_id,
+                    count( * ) AS likeCount
+              FROM
+                    bs_like bl
+              WHERE
+                    bl.del_flag = '0'
+                GROUP BY
+	          ref_id
+	          ) c ON c.ref_id = f.id
+        ORDER BY createTime DESC
+        LIMIT ${pageStart}, ${pageSize}
+
+    </select>
+
+    <select id="findUserLikeCount" resultType="java.lang.Integer">
+        SELECT
+	      count(*) as userLikeCount
+        FROM
+              ( SELECT ref_id FROM bs_like br WHERE br.del_flag = '0' AND  br.create_by = #{uId} ) d
+	          LEFT JOIN (
+	                SELECT
+                        a.id AS id,
+                        a.title AS content,
+                        a.create_date AS createTime,
+                        a.create_by AS createDy,
+                        '帖子' as likeType,
+                        '0' as commentId
+                    FROM
+                        bs_post a
+                    WHERE
+                        a.del_flag = '0'
+                    UNION ALL
+                    SELECT
+                        b.id AS id,
+                        b.content AS content,
+                        b.create_date AS createTime,
+                        b.create_by AS createDy,
+                        '评论' AS postTypeLabel,
+                        b.post_id AS commentId
+                    FROM
+                        bs_comment b
+                    WHERE
+                        b.del_flag = '0'
+	                ) f ON d.ref_id = f.id
+              LEFT JOIN
+              (SELECT
+                    ref_id,
+                    count( * ) AS likeCount
+              FROM
+                    bs_like bl
+              WHERE
+                    bl.del_flag = '0'
+                GROUP BY
+	          ref_id
+	          ) c ON c.ref_id = f.id
+    </select>
+</mapper>

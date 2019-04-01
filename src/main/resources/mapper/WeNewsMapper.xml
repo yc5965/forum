@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.etc.dao.WeNewsMapper">
+
+    <select id="findList" resultType="com.alibaba.fastjson.JSONObject">
+        select
+          *
+        from
+          wenew_article
+        order by article_create_at desc
+    </select>
+
+
+    <select id="findDetail" resultType="com.alibaba.fastjson.JSONObject">
+        select
+          *
+        from
+          wenew_article
+        where article_id = #{articleId}
+    </select>
+
+</mapper>

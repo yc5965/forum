@@ -1,0 +1,95 @@
+@charset "utf-8";
+.pathlf {
+	background: #48a9a5
+}
+
+.pathlf em {
+	background-position: 0 -245px
+}
+
+.pathlf a:hover em {
+	background-position: -30px -70px
+}
+
+.pip_aud,
+.pip_mag,
+.pip_mag_per,
+.pip_rel {
+	border-top: solid 2px #48a9a5
+}
+
+.pip_rel dd.pip_rel_sub span {
+	background-position: 0 -46px
+}
+
+.moreReport span {
+	background-position: 0 -58px
+}
+
+.submit_color {
+	color: #48a9a5
+}
+
+.conTop {
+	border-top-color: #48a9a5;
+	color: #48a9a5
+}
+
+.conTop a {
+	color: #48a9a5
+}
+
+.pip_rel dt {
+	color: #48a9a5
+}
+
+.indexMainCon .title {
+	border-top-color: #48a9a5!important
+}
+
+.indexMainCon .title a {
+	color: #48a9a5!important
+}
+
+.comment h3 li.hovertab,
+.indexMainCon .title,
+.kuaixunTit,
+.top10 .topTitTab {
+	color: #48a9a5
+}
+
+.indexMainCon .title span,
+.lmIntro p a {
+	color: #bfbfbf
+}
+
+.ywTab td.hovertab {
+	color: #48a9a5;
+	border-bottom-color: #48a9a5
+}
+
+.kuaixunTit a:hover,
+.lmIntro p a:hover {
+	color: #eb8c14
+}
+
+.top10 .topTitTab li.current {
+	color: #48a9a5
+}
+
+.top10Con dt {
+	color: #48a9a5
+}
+
+.ywListCon h4 em {
+	color: #48a9a5;
+	border-color: #48a9a5
+}
+
+.ywListCon h4 i {
+	border-color: #48a9a5
+}
+
+.ywListCon h4 i a {
+	color: #48a9a5
+}

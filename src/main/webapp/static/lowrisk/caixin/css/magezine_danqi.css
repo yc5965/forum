@@ -1,0 +1,105 @@
+/* 瑕嗙洊鏍峰紡 */
+.indexTop {border:none;}
+.indexTopAd {display:none;}
+.indexribox {margin:30px 0 0 0;}
+
+/*鍐呭閮ㄥ垎*/
+.main {width:989px;margin:0 auto 15px;}
+.mainMagContent {float:left;width:987px;background:url(http://file.caixin.com/images/channel/catalogue/images/bg_01.jpg) repeat-x;padding:0 0 20px 0;margin:0 0 30px 0;border:solid 1px #BFBFC1;}
+
+/*瀵艰埅&鍒嗕韩*/
+.navShare{width:990px; padding-bottom:5px;}
+
+/*浣嶇疆瀵艰埅*/
+.positionNav {float:left;color:#999999;}
+.positionNav a:link,.positionNav a:visited {color:#999999;}
+.positionNav a:hover,.positionNav a:active {color:#009DDD;}
+
+/*鍒嗕韩*/
+.funcri {float:right;}
+.navShare li { position:relative; z-index:1000; float:left; height:25px;}
+.navShare li a { display:inline-block; width:25px; height:25px; background-color:#c3c3c3; background-image:url(http://file.caixin.com/file/content/images/new/function_icon.png); _background-image:url(http://file.caixin.com/file/content/images/new/function_icon_ie6.png);}
+.navShare li a:hover { background-color:#0072bc;}
+.funcri li { margin-left:5px;}
+a.f_favor { background-position:0 0;}
+a.f_print { background-position:-30px 0;}
+a.f_zoom_out { background-position:-60px 0;}
+a.f_zoom_in { background-position:-90px 0;}
+a.f_apple { background-position:-120px 0;}
+a.f_android { background-position:-150px 0;}
+a.f_comment { background-position:-175px 0;}
+a.f_email { background-position:-205px 0;}
+a.f_tencent { background-position:-235px 0;}
+a.f_sina { background-position:-265px 0;}
+a.f_more { background-position:-295px 0;}
+.navShare .drop_off .f_more_box,.navShare .drop_off .tooltip { display:none;}
+.navShare .drop_on .f_more_box,.navShare .drop_on .tooltip { display:block;}
+.tooltip{ display:none; position:absolute; top:25px; left:-20px; width:65px; height:20px; text-align:center; background:url(http://file.caixin.com/file/content/images/new/function_icon.png) no-repeat 0 -287px; _background:url(http://file.caixin.com/file/content/images/new/function_icon_ie6.png) no-repeat 0 -287px; padding-top:11px; color:#969696;}
+.f_more_box { display:none; position:absolute; top:25px; left:-30px; width:88px; height:241px; background:url(http://file.caixin.com/file/content/images/new/function_icon.png) no-repeat 0 -323px; _background:url(http://file.caixin.com/file/content/images/new/function_icon_ie6.png) no-repeat 0 -323px; padding-top:13px; z-index:20;}
+.f_more_box li { float:none; line-height:25px; margin:0 5px 5px;}
+.f_more_box li a { display:block; float:none; width:auto; height:auto; background:none; overflow:hidden; zoom:1; color:#969696;}
+.f_more_box li a span { float:left; display:inline; width:25px; height:25px; background-image:url(http://file.caixin.com/file/content/images/new/function_icon.png); _background-image:url(http://file.caixin.com/file/content/images/new/function_icon_ie6.png); background-color:#c3c3c3; margin-right:5px; _margin-right:2px;}
+.f_more_box li a:hover { background:none; color:#EB8C14;}
+.f_more_box li a:hover span { background-color:#0072bc;}
+.f_qzone span { background-position:0 -25px;}
+.f_kaixin span { background-position:0 -55px;}
+.f_163 span { background-position:0 -85px;}
+.f_douban span { background-position:0 -115px;}
+.f_xianguo span { background-position:0 -145px;}
+.f_sohu span { background-position:0 -175px;}
+.f_baidu span { background-position:0 -205px;}
+.f_google span { background-position:0 -235px;}
+
+/*灏侀潰鎶ラ亾 */
+.report {position:relative;float:left;width:415px;height:477px;padding:95px 45px 0 70px;}
+.report .date {position:absolute;top:-6px;left:-5px;width:171px;height:171px;}
+.report .title {font-size:26px;font-family:"榛戜綋";color:#010101;}
+.report .title span {font-family:"瀹嬩綋";color:#8F8F8F;font-size:14px;font-weight:bold;}
+.report .source {padding:7px 0 44px 38px;color:#9A9A9A;}
+.reportTit,.magContentTit{padding:0 0 6px 0;font-size:14px;color:#000000;border-bottom:solid 5px #D2D2D2;font-weight:bold;}
+.reportTit span,.magContentTit span {font-family:Arial, Helvetica, sans-serif;color:#ABABAB;font-size:16px;}
+.report dl {width:415px;}
+.report dl dt {padding:19px 0 10px 0;font-family:"榛戜綋";font-size:24px;color:#F4AA31;}
+.report dl dt a:link,.report dl dt a:visited {color:#F4AA31;}
+.report dl dt a:hover,.report dl dt a:active {color:#009DDD;}
+.report dl dd {color:#626262;font-size:14px;line-height:21px;}
+.report ul {width:415px;padding:10px 0;line-height:30px;font-size:14px;}
+.report ul li {background:url(http://file.caixin.com/images/channel/catalogue/images/icon_01.jpg) no-repeat left center;padding:0 0 0 18px;}
+.report p {padding:8px 0;font-size:16px;font-weight:bold;color:#F4AA31;}
+.report p a:link,.report p a:visited {color:#F4AA31;}
+.report p a:hover,.report p a:active {color:#009DDD;}
+.report .tag { position:relative; left:-70px; width:350px; height:83px; background:url(http://file.caixin.com/file/magazine/images/zazhi_tag.png) no-repeat; font-size:12px; line-height:22px; padding:10px 74px 0 70px; margin-top:25px; color:#c5000a; font-family:"寰蒋闆呴粦"; font-weight:bold;}
+.cover {float:right;width:435px;height:514px;padding:58px 0 0 0;}
+.cover .subscribe {width:385px;height:16px;background:url(http://file.caixin.com/images/channel/catalogue/images/icon_02.jpg) no-repeat 15px center;padding:0 0 0 38px;margin:5px 0 0 0;font-size:14px;}
+
+/*鏉傚織鍐呭浠嬬粛*/
+.magContent {float:left;width:847px;padding:0 70px 70px 70px;}
+.magIntro {float:left;width:401px;}
+.magContentlf,.magContentri {float:left;width:165px;}
+.magContentlf {padding:0 70px 0 0;}
+.magContentlf dl,.magContentri dl {width:165px;padding:10px 0 0 0;line-height:30px;font-size:14px;}
+.magContentlf dl dt span,.magContentri dl dt span {padding:0 0 5px 0;margin:0 7px 0 0;border-bottom:solid 3px #C8C8C8;*border-bottom:solid 2px #C8C8C8;}
+.magContentlf dl dt,.magContentri dl dt {margin:0 0 12px 0;padding-bottom:0px;border-bottom:solid 1px #C8C8C8;color:#E48102;font-weight:bold;}
+
+/*鏉傚織鍐呭浠嬬粛2*/
+.magContent2 {width:847px;padding:0 70px 0 70px; overflow:hidden; zoom:1;}
+.magIntro2 {width:847px;padding:25px 0 0 0;font-size:14px;}
+.magContentlf2,.magContentri2,.magContentce {float:left;width:212px;}
+.magContentlf2,.magContentce {padding:0 105px 0 0;}
+.magIntrotit span{padding:0 0 5px 0;margin:0 7px 0 0;border-bottom:solid 3px #C8C8C8;}
+.magIntrotit{margin:0 0 12px 0;padding-bottom:6px;border-bottom:solid 1px #C8C8C8;color:#E48102;font-weight:bold;}
+.magIntro2 dl {margin:0 0 30px 0;color:#626262;line-height:21px;}
+.magIntro2 dl dt {margin:20px 0 0 0; color:#000;}
+.magIntro2 dl dt a:link,.magIntro2 dl dt a:visited{color:#336797;}
+.magIntro2 dl dt a:hover,.magIntro2 dl dt a:active{color:#E48102;}
+.magIntro2 dl dd.date {padding:1px 0;font-size:12px;color:#9A9A9A;}
+
+/*鍒嗕韩*/
+.positionNav .siteShare{position:absolute;top:20px;right:0px;line-height:16px;float:right;}
+.positionNav .siteShare li{float:left; margin:0 0 0 5px; padding:0 0 5px 0; height:16px;}
+.positionNav .siteShare li.snSite{position:relative;text-align:right;}
+.positionNav .siteShare li.snSite div{position:absolute; right:-10px; top:18px; padding:5px 0; border:solid 1px #efefef; background:#fff;text-align:left;}
+.positionNav .siteShare li.snSite span{display:block; white-space:nowrap;}
+.positionNav .siteShare li.snSite span a{padding:5px 10px; display:block;}
+.positionNav .siteShare li.snSite span a:hover{background:#f5f5f5;}
+.positionNav .siteShare li.snSite span img{vertical-align:middle; margin-right:7px;}
