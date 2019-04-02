@@ -64,9 +64,15 @@ public class BsPostController{
     }
 
     @RequestMapping(value = "saveAjax")
-    @Produces("application/json; charset=utf-8")
     @ResponseBody
-    public JSONObject saveAjax(String postType, String title, String id, String content, String postTags, String postStatus, @RequestParam("file") MultipartFile multipartFile, HttpServletRequest request) throws Exception{
+    public JsonResult saveAjax(@RequestParam(value="postType", required = false) String postType,
+                               @RequestParam(value="title", required = false) String title,
+                               @RequestParam(value="id", required = false) String id,
+                               @RequestParam(value="content", required = false) String content,
+                               @RequestParam(value="postTags", required = false) String postTags,
+                               @RequestParam(value="postStatus", required = false) String postStatus,
+                               @RequestParam(value="file", required = false) MultipartFile multipartFile,
+                               HttpServletRequest request) throws Exception{
         BsPost bsPost=new BsPost();
         bsPost.setId(id);
         bsPost.setPostStatus(postStatus);
@@ -103,9 +109,8 @@ public class BsPostController{
         }else {
             bsPostService.updateBsPost(bsPost);
         }
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("id",bsPost.getId());
-        return jsonObject;
+
+        return new JsonResult(bsPost);
     }
 
     @RequestMapping(value = "getUserPosts")

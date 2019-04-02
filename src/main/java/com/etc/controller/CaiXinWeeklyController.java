@@ -10,22 +10,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.*;
 
 @Controller
-@RequestMapping("/caixin")
-public class CaiXinApiController {
+@RequestMapping("/caixinWeekly")
+public class CaiXinWeeklyController {
 
     @Autowired
     private CaiXinService caiXinApiService;
-
-    @RequestMapping("indexCaixin")
-    public String index(Model model) {
-        return "caixin/indexCaixin";
-    }
 
     @RequestMapping("weeklyCaixin")
     public String weekly(Model model) {
@@ -43,18 +37,6 @@ public class CaiXinApiController {
         }
         model.addAttribute("article", article);
         return "caixin/article";
-    }
-
-    @RequestMapping("indexPage")
-    @ResponseBody
-    public Map<String,Object> indexPage(Integer pageNum, Integer pageSize) {
-        Integer pageStart = (pageNum - 1) * pageSize;
-        Map map=new HashMap<>();
-        Integer  count = caiXinApiService.getArticleCount();
-        List<Article> articles = caiXinApiService.getArticles(pageStart, pageSize);
-        map.put("pageCount",count);
-        map.put("articles",articles);
-        return map;
     }
 
     @RequestMapping("weeklyPage")
@@ -116,23 +98,5 @@ public class CaiXinApiController {
         model.addAttribute("article", weeklyArticle);
         return "caixin/article";
 
-    }
-
-    @RequestMapping("searchPage")
-    @ResponseBody
-    public Map<String,Object> searchPage(Integer pageNum, Integer pageSize, String searchVal) {
-        Integer pageStart = (pageNum - 1) * pageSize;
-        Map map=new HashMap<>();
-        Integer count = caiXinApiService.getCountBySearch(searchVal);
-        List<Article> articles = caiXinApiService.searchPage(pageStart, pageSize, searchVal);
-        map.put("pageCount",count);
-        map.put("articles",articles);
-        return map;
-    }
-
-    @RequestMapping("searchResult")
-    public String searchResult(String searchVal ,Model model){
-        model.addAttribute("searchVal" ,searchVal);
-        return "searchResult";
     }
 }

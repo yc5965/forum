@@ -14,10 +14,10 @@ public class WeNewsController {
     @Autowired
     private WeNewsMapper weNewsMapper;
 
-    @RequestMapping("index")
+    @RequestMapping("indexWenews")
     public String index(Model model) {
         model.addAttribute("list", weNewsMapper.findList());
-        return "wenews/index";
+        return "wenews/wenewsIndex";
     }
 
     @RequestMapping("detail/{id}")

@@ -33,4 +33,24 @@
 		<property name="suffix" value=".jsp"></property>
 	</bean>
 
+	<!-- springmvc提供的简单异常处理器 -->
+	<bean
+			class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<!-- 定义默认的异常处理页面 -->
+		<property name="defaultErrorView" value="/WEB-INF/jsp/404.jsp" />
+	</bean>
+
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!-- 对所有请求进行拦截 -->
+			<mvc:mapping path="/home/**"/>
+			<mvc:mapping path="/caixinWeekly/**"/>
+			<!-- 配置不需要拦截的请求 -->
+			<mvc:exclude-mapping path="/home/index"/>
+			<!-- 配置使用的拦截器 -->
+			<bean class="com.etc.interceptor.RequestHandlerInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+
 </beans>

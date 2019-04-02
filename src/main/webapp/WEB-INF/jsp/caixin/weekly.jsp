@@ -37,7 +37,7 @@
             <div class="source" >${toutiao.weeklyTime}</div>
             <div class="reportTit">封面报道　<span>Cover Story</span></div>
             <dl>
-                <dt><a href="/caixin/getWeeklyArticle/${toutiao.id}" target="_blank">${toutiao.weeklyTitle}</a></dt>
+                <dt><a href="/caixinWeekly/getWeeklyArticle/${toutiao.id}" target="_blank">${toutiao.weeklyTitle}</a></dt>
                 <dd >${toutiao.weeklySummary}</dd>
             </dl>
             <br>
@@ -45,7 +45,7 @@
                 <ul  class="futItem" style="text-align: left">
                     <c:forEach items="${futs.artList}" var="fut">
                     <ol>
-                    <p><a href="/caixin/getWeeklyArticle/${fut.id}" target="_blank">${fut.title}</a></p>
+                    <p><a href="/caixinWeekly/getWeeklyArticle/${fut.id}" target="_blank">${fut.title}</a></p>
                     </ol>
                     </c:forEach>
                 </ul>
@@ -68,7 +68,7 @@
                         <div class="magIntrotit"><span >${weeklyArtTypes.artType}</span></div>
                         <c:forEach items="${weeklyArtTypes.artList}" var="weeklyArticle">
                         <dl>
-                            <dt><a href="/caixin/getWeeklyArticle/${weeklyArticle.id}" target="_blank">${weeklyArticle.title}</a></dt>
+                            <dt><a href="/caixinWeekly/getWeeklyArticle/${weeklyArticle.id}" target="_blank">${weeklyArticle.title}</a></dt>
                             <dd class="date"></dd>
                             <dd>${weeklyArticle.introduction}</dd>
                         </dl>
@@ -82,7 +82,7 @@
                         <div class="magIntrotit"><span>${weeklyArtTypes.artType}</span></div>
                         <c:forEach items="${weeklyArtTypes.artList}" var="weeklyArticle">
                         <dl>
-                            <dt><a href="/caixin/getWeeklyArticle/${weeklyArticle.id}" target="_blank">${weeklyArticle.title}</a></dt>
+                            <dt><a href="/caixinWeekly/getWeeklyArticle/${weeklyArticle.id}" target="_blank">${weeklyArticle.title}</a></dt>
                             <dd class="date"></dd>
                             <dd>${weeklyArticle.introduction}</dd>
                         </dl>
@@ -97,7 +97,7 @@
                         <div class="magIntrotit"><span>${weeklyArtTypes.artType}</span></div>
                         <c:forEach items="${weeklyArtTypes.artList}" var="weeklyArticle">
                         <dl>
-                            <dt><a href="/caixin/getWeeklyArticle/${weeklyArticle.id}" target="_blank">${weeklyArticle.title}</a></dt>
+                            <dt><a href="/caixinWeekly/getWeeklyArticle/${weeklyArticle.id}" target="_blank">${weeklyArticle.title}</a></dt>
                             <dd class="date"></dd>
                             <dd>${weeklyArticle.introduction}</dd>
                         </dl>

@@ -87,9 +87,9 @@
 			#{id},
 			#{postId},
 			#{createBy.id},
-			#{updateBy.id},
+			#{createBy.id},
 			#{createDate},
-			#{updateDate},
+			#{createDate},
 			#{delFlag},
 			#{remarks}
 		)

@@ -41,7 +41,7 @@
 </div>
 <script id="artItem" type="text/html">
     <div class="layui-col-md12 main-content-item">
-        <a href="/caixin/getArticle/{{d.id}}" target="_blank">
+        <a href="/caixinIndex/getArticle/{{d.id}}" target="_blank">
             <span class="item-title"> {{d.title}} </span>
             <p class="item-intro">{{d.introduction}}</p>
             <span>{{d.artTime}}</span>
@@ -70,7 +70,7 @@
             var data = null;
             var pageSize = 10;
             $.ajax({
-                url: "${ctx}/caixin/indexPage",
+                url: "${ctx}/caixinIndex/indexPage",
                 type: "POST",
                 data: {"pageNum": 1, "pageSize": pageSize},
                 success: function (data) {
@@ -99,7 +99,7 @@
                             }
                             data = {"pageNum": obj.curr, "pageSize": pageSize};
                             $.ajax({
-                                url: "${ctx}/caixin/indexPage",
+                                url: "${ctx}/caixinIndex/indexPage",
                                 type: "POST",
                                 data: data,
                                 success: function (data) {
@@ -119,7 +119,6 @@
         }
         indexCaixin();
     });
-
 
 </script>
 

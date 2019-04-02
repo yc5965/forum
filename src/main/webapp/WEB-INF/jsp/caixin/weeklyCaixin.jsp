@@ -43,9 +43,9 @@
 <script id="weeklyItem" type="text/html">
     <div class="layui-col-md3 ">
         <div class="weekly-item">
-            <a href="/caixin/getWeekly/{{d.id}}" target="_blank"><img src="{{d.weeklyImage}}" class="weekly-image"/></a>
+            <a href="/caixinWeekly/getWeekly/{{d.id}}" target="_blank"><img src="{{d.weeklyImage}}" class="weekly-image"/></a>
             <div class="weekly-title">
-                <a href="/caixin/getWeekly/{{d.id}}"
+                <a href="/caixinWeekly/getWeekly/{{d.id}}"
                    class="weekly-title-item">{{d.weeklyTitle.split('】')[1]? d.weeklyTitle.split('】')[1]: d.weeklyTitle.split('|')[1] }}</a>
                 <br><span class="weekly-title-time">{{d.weeklyNum}}<br>{{d.weeklyTime.split('《财新周刊》')[1]}}</span>
             </div>
@@ -75,7 +75,7 @@
             var data = null;
             var pageSize = 12;
             $.ajax({
-                url: "${ctx}/caixin/weeklyPage",
+                url: "${ctx}/caixinWeekly/weeklyPage",
                 type: "POST",
                 data: {"pageNum": 1, "pageSize": pageSize},
                 success: function (data) {
@@ -104,7 +104,7 @@
                             }
                             data = {"pageNum": obj.curr, "pageSize": pageSize};
                             $.ajax({
-                                url: "${ctx}/caixin/weeklyPage",
+                                url: "${ctx}/caixinWeekly/weeklyPage",
                                 type: "POST",
                                 data: data,
                                 success: function (data) {

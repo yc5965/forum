@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * 文章信息Service
@@ -74,6 +75,8 @@ public class BsPostService {
 		BsPost bsPost = bsPostMapper.findDetail(id, UserUtils.getUser().getId());
 		try{
 			BsView bv = new BsView();
+			bv.setDelFlag("0");
+			bv.setId(UUID.randomUUID().toString());
 			bv.setCreateBy(UserUtils.getUser());
 			bv.setPostId(bsPost.getId());
 			bsViewService.save(bv);

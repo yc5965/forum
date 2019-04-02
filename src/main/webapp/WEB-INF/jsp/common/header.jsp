@@ -11,6 +11,28 @@
         border-bottom: #fff !important;
         border-right: #fff !important;
     }
+
+    @media screen and (max-width: 680px) {
+        .search-bar{
+            width: 100%;
+            float:right;
+        }
+    }
+
+    @media screen and (min-width: 680px) {
+        #search{
+            float:right;
+        }
+        .search-bar{
+            width: 220px;
+            float:right;
+        }
+        .search{
+            width: 100%;
+            padding: 40px 0px 10px 0;
+        }
+    }
+
 </style>
 
 <div class="fly-header layui-bg-white">
@@ -35,12 +57,16 @@
 <div class="fly-panel fly-column">
     <div class="layui-container">
         <ul class="layui-clear">
-            <li class="layui-hide-xs layui-this"><a href="${ctx}/home/index">首页</a></li>
-            <li class="layui-hide-xs"><a href="${ctx}/caixin/indexCaixin">财新头条</a></li>
-            <li class="layui-hide-xs"><a href="${ctx}/cj/news">资讯快看</a></li>
-            <li  class="layui-hide-xs"><a href="">基金信息</a></li>
-            <li  class="layui-hide-xs"><a href="${ctx}/caixin/weeklyCaixin">新闻周刊</a></li>
+            <li class="layui-hide-xs" id="index"><a href="${ctx}/home/index">首页</a></li>
+            <li class="layui-hide-xs" id="caijing"><a href="${ctx}/cj/news">资讯快看</a></li>
+            <li class="layui-hide-xs" id="wenews"><a href="${ctx}/wenews/indexWenews">我闻资讯</a></li>
+            <li class="layui-hide-xs" id="indexCaixin"><a href="${ctx}/caixinIndex/indexCaixin">财新头条</a></li>
+            <li  class="layui-hide-xs" id="indexWeekly"><a href="${ctx}/caixinWeekly/weeklyCaixin">新闻周刊</a></li>
+            <a href="javascript:;" class="layui-btn" id="search" style="margin-top: 6px"><span class="fly-search LAY_search"><i
+                    class="layui-icon"></i></span></a>
+            <input type="text" placeholder="点击搜索" class="layui-input search-bar" id="searchVal" style="margin-top: 6px">
         </ul>
+
     </div>
 </div>
 
@@ -104,5 +130,37 @@
         }else{
             $("#head_user").append($("#islogin").text());
         }
+
+        var locationUrl = window.location.href;
+        if (locationUrl.indexOf("cj") != -1) {
+            $("#caijing").addClass("layui-this");
+            return
+        } else if (locationUrl.indexOf("caixinIndex") != -1) {
+            $("#indexCaixin").addClass("layui-this");
+            return
+        } else if (locationUrl.indexOf("caixinWeekly") != -1) {
+            $("#indexWeekly").addClass("layui-this");
+            return
+        } else if (locationUrl.indexOf("wenews") != -1) {
+            $("#wenews").addClass("layui-this");
+            return
+        }
+        else if (locationUrl.indexOf("index") != -1) {
+            $("#index").addClass("layui-this");
+            return
+        }
     });
+    $(document).on("click","#search",function (e) {
+        window.location.href="${ctx}/caixinIndex/searchResult?searchVal="+$("#searchVal").val();
+    });
+    $(document).on("keydown","#searchVal",function (e) {
+        if (e.keyCode == 13) {
+            window.location.href = "${ctx}/caixinIndex/searchResult?searchVal=" + $("#searchVal").val();
+        }
+    });
+
+
 </script>
+
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"来自乐瑞社区","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"slide":{"type":"slide","bdImg":"1","bdPos":"right","bdTop":"250"}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+

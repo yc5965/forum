@@ -14,7 +14,7 @@
 <script type="text/html" id="hotPostArea">
     {{#  layui.each(d, function(index, item){ }}
     <li>
-        <a href="${ctx}/home/detail/?id={{item.id}}" target="_blank">{{item.title}}</a>
+        <a href="${ctx}/home/detail/?id={{item.id}}">{{item.title}}</a>
     </li>
     {{#  }); }}
 </script>
@@ -22,7 +22,7 @@
 <script type="text/html" id="replyItem">
     {{#  layui.each(d, function(index, item){ }}
     <dd>
-        <a href="${ctx}/home/user/?id={{item.createBy.id}}" target="_blank">
+        <a href="${ctx}/home/user/?id={{item.createBy.id}}">
             <img src="${ctxStatic}{{item.createBy.photo}}"><cite>{{item.createBy.name}}</cite><i>{{item.userCommentCount}}次回答</i>
         </a>
     </dd>

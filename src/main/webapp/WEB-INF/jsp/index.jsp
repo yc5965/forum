@@ -114,7 +114,7 @@
         </a>
         <h2>
             <a class="layui-badge">{{d.postTypeLabel}}</a>
-            <a href="${ctx}/home/detail?id={{d.id}}" target="_blank">{{d.title}}</a>
+            <a href="${ctx}/home/detail?id={{d.id}}">{{d.title}}</a>
         </h2>
         <div class="fly-list-info">
             <a href="${ctx}/home/user?id={{d.createBy.id}}" link="" target="_blank">
@@ -160,6 +160,12 @@
         var table = layui.table;
         var $ = jQuery = layui.$;
         var laypage = layui.laypage;
+        $(function(){
+            var user='${sessionScope.user}';
+            if(user==''){
+                layer.msg("温馨提示: 请及时登录!");
+            }
+        })
 
         function initCarousel() {
             $.ajax({

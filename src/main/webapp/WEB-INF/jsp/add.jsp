@@ -15,7 +15,6 @@
     <!-- summernote -->
     <script src="${ctxStatic}/jquery/jquery-3.0.0.min.js" type="text/javascript"></script>
     <script src="${ctxStatic}/jquery/jquery-migrate-3.0.0.min.js" type="text/javascript"></script>
-    <script src="${ctxStatic}/jquery/ajaxfileupload.js" type="text/javascript"></script>
     <link href="${ctxStatic}/bootstrap/3.3.7/css/bootstrap.css" type="text/css" rel="stylesheet"/>
     <script src="${ctxStatic}/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
     <link href="${ctxStatic}/summernote/summernote.css" rel="stylesheet">
@@ -214,25 +213,39 @@
                 return false;
             }
             var loadIndex = layer.load(0);
-            $.ajaxFileUpload({
-                url:"${ctx}/bs/bsPost/saveAjax",
-                type:'post',
-                fileElementId: 'coverImg',
-                data:{'id':id,'postType':postType,'content':content,'tags':tags,'title':title,'postStatus': postStatus},
+
+            var formdata = new FormData();
+            formdata.append('file', $('#coverImg')[0].files[0]); //上传文件
+            formdata.append('id', id); //id
+            formdata.append('content', content);
+            formdata.append('tags', tags);
+            formdata.append('postType', postType); //id
+            formdata.append('title', title);
+            formdata.append('postStatus', postStatus);
+            $.ajax({
+                type: "POST",
+                url: '${ctx}/bs/bsPost/saveAjax',
+                data: formdata,
                 dataType:'json',
-                success:function(r){
+                processData:false,
+                contentType:false,
+                cache: false,
+                success: function(r){
                     layer.close(loadIndex);
                     if (r && r.status == 'ok') {
                         layer.msg("保存成功，自动跳转中!");
                         setTimeout(function () {
-                            window.location.href = '${ctx}/home/detail?id='+r.id;
+                            window.location.href = '${ctx}/home/detail?id='+r.data.id;
                         }, 1000);
                     } else {
                         layer.msg("服务器错误，请重试或联系管理员！", {icon: 5});
                     }
+                },
+                error:function(data,status,e){
+                    layer.msg("服务器错误，请重试或联系管理员！", {icon: 5});
                 }
-            })
-        })
+            });
+        }) ;
 
         form.on('radio(postStatus)', function (data) {
             var val = data.value;
