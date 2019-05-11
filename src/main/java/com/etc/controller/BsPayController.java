@@ -44,7 +44,6 @@ public class BsPayController {
         alipayRequest.setReturnUrl(AlipayConfig.return_url);
         alipayRequest.setNotifyUrl(AlipayConfig.notify_url);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmssSSS");
-        // 商户订单号，商户网站订单系统中唯一订单号，必填
         String out_trade_no = sdf.format(new Date());
         // 付款金额，必填
         String total_amount = price;

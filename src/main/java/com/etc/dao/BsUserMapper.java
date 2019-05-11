@@ -12,6 +12,8 @@ public interface BsUserMapper {
 
     List<BsUser> findList();
 
+    List<BsUser> findListUser(@Param("pageStart") Integer pageStart,@Param("pageSize") Integer pageSize);
+
     BsUser findUserByEmail(@Param("email") String email);
 
     Integer updateUserByEmail(@Param("user") BsUser user);

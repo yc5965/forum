@@ -40,8 +40,8 @@ public class BsPostService {
 		return bsPostMapper.get(id);
 	}
 	
-	public List<BsPost> findList(BsPost bsPost) {
-		return null;
+	public Integer findListCount() {
+		return bsPostMapper.findListCount();
 	}
 	
 	public Page<BsPost> findPage(Page<BsPost> page, BsPost bsPost) {
@@ -114,4 +114,8 @@ public class BsPostService {
     public void updateBsPost(BsPost bsPost) {
 		bsPostMapper.update(bsPost);
     }
+
+	public List<BsPost> getPostList(Integer pageStart, Integer limit) {
+		return bsPostMapper.getPostList(pageStart,limit);
+	}
 }

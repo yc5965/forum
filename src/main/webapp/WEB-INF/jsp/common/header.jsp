@@ -41,16 +41,12 @@
             <img src="${ctxStatic}/layui/res/images/logo.png" alt="layui">
         </a>
         <ul class="layui-nav fly-nav " style="margin-left:160px;">
-            <c:if test="">
+            <c:if test="${sessionScope.user.userType ==0}">
             <li class="layui-nav-item layui-this layui-hide-xs">
-                <a href="${ctx}" style="padding:0 25px 0 25px;color:#000000 ">后台管理</a>
+                <a href="${ctx}/admin/index" style="padding:0 25px 0 25px;color:#000000 " target="_blank">后台管理</a>
             </li>
             </c:if>
         </ul>
-
-
-
-
     </div>
 </div>
 
@@ -77,7 +73,7 @@
             <a class="iconfont icon-touxiang layui-hide-xs" href="${ctx}/login/loginIndex"></a>
         </li>
         <li class="layui-nav-item">
-            <a style="color: #000000" href="${ctx}/login/loginIndex">登入</a>
+            <a style="color: #000000" href="${ctx}/login/loginIndex">登录</a>
         </li>
         <li class="layui-nav-item">
             <a style="color: #000000" href="${ctx}/login/regIndex">注册</a>

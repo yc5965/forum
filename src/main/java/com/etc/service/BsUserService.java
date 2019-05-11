@@ -18,10 +18,6 @@ public class BsUserService {
     @Autowired
     private BsUserMapper bsUserMapper;
 
-    public List<BsUser> findList() {
-        return bsUserMapper.findList();
-    }
-
     public Boolean regUser(BsUser user){
         int i = bsUserMapper.insert(user);
         if (i > 0) {
@@ -66,10 +62,6 @@ public class BsUserService {
         Date date = new Date();
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
-        //增加一年
-        //cd.add(Calendar.DATE, n);//增加一天  
-        //cd.add(Calendar.DATE, -10);//减10天  
-        //cd.add(Calendar.MONTH, n);//增加一个月 
         if (price.equals("263.00")){
             cal.add(Calendar.YEAR, 1);
             user.setExpireDate(DateUtil.date(cal));
@@ -81,7 +73,14 @@ public class BsUserService {
             cal.add(Calendar.MONTH, 1);
             user.setExpireDate(DateUtil.date(cal));
         }
-
         bsUserMapper.updateUserType(user);
+    }
+
+    public List<BsUser> findListUser(Integer pageStart,Integer pageSize) {
+        return bsUserMapper.findListUser(pageStart,pageSize);
+    }
+
+    public List<BsUser> findList() {
+        return bsUserMapper.findList();
     }
 }

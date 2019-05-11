@@ -133,4 +133,12 @@ public class BsUser implements Serializable {
         this.delFlag = delFlag;
         this.expireDate = expireDate;
     }
+
+    public BsUser( String name, String email, String userType, Date createDate,   Date expireDate) {
+        this.name = name;
+        this.email = email;
+        this.userType = userType;
+        this.createDate = createDate;
+        this.expireDate = expireDate;
+    }
 }

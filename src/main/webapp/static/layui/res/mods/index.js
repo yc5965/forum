@@ -612,7 +612,7 @@ layui.define(['layer', 'laytpl', 'form', 'element', 'upload', 'util'], function(
     ,bgcolor: '#009688'
     ,click: function(type){
       if(type === 'bar1'){
-        window.open(ctx + '/home/add',"_blank");
+        location.href = ctx + '/home/add';
       }
     }
   });

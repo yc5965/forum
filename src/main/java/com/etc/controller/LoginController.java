@@ -88,6 +88,7 @@ public class LoginController {
         }
     }
 
+    //注册用户
     @RequestMapping("regUser")
     @ResponseBody
     public JsonResult regUser(BsUser user) {
