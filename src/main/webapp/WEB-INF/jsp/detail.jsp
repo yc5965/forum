@@ -196,8 +196,9 @@
       var loadIndex = layer.load(0);
       $.ajax({
         url:"${ctx}/bs/bsComment/saveComment",
+        contentType: "application/json;charset=UTF-8",
         type:'post',
-        data:data.field,
+        data:JSON.stringify({"postId":data.field.postId,"content":data.field.content}),
         success:function(r){
           layer.close(loadIndex);
           initComments(function(){

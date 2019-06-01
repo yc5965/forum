@@ -2,6 +2,7 @@ package com.etc.dao;
 
 
 import com.etc.entity.BsUser;
+import com.etc.entity.EcharsData;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -23,4 +24,6 @@ public interface BsUserMapper {
     BsUser getByName(@Param("name") String name);
 
     void updateUserType(@Param("user") BsUser user);
+
+    List<EcharsData> getvData();
 }

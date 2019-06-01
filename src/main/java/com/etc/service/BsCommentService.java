@@ -7,6 +7,7 @@ package com.etc.service;
 import com.etc.dao.BsCommentMapper;
 import com.etc.dao.BsPostMapper;
 import com.etc.entity.BsComment;
+import com.etc.entity.BsPost;
 import com.etc.utils.UserUtils;
 import com.github.pagehelper.Page;
 import com.xiaoleilu.hutool.util.StrUtil;
@@ -93,5 +94,13 @@ public class BsCommentService{
 
 	public Integer getTabPosition(BsComment bsComment) {
 		return bsCommentMapper.findTabPosition(bsComment);
+	}
+
+    public List<BsComment> getCommentList(Integer pageStart, Integer limit) {
+		return bsCommentMapper.getCommentList(pageStart,limit);
+    }
+
+	public Integer findListCount() {
+		return bsCommentMapper.findListCount();
 	}
 }

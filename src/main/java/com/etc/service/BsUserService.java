@@ -3,6 +3,7 @@ package com.etc.service;
 import com.etc.common.EnDecryptUtil;
 import com.etc.dao.BsUserMapper;
 import com.etc.entity.BsUser;
+import com.etc.entity.EcharsData;
 import com.etc.utils.UserUtils;
 import com.xiaoleilu.hutool.date.DateUtil;
 import com.xiaoleilu.hutool.util.ObjectUtil;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class BsUserService {
@@ -59,6 +61,17 @@ public class BsUserService {
     public void updateUserType(String userType,String price) {
         BsUser user = UserUtils.getUser();
         user.setUserType(userType);
+
+        int max=5;
+        int min=1;
+
+        Random random = new Random();
+        int number = random.nextInt(max) % (max - min + 1) + min;
+        user.setDelFlag("0");
+        user.setPhoto("/avatar/default/g"+String.valueOf(number)+".gif");
+        user.setCreateDate(new Date());
+
+        user.setPhoto("");
         Date date = new Date();
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
@@ -82,5 +95,9 @@ public class BsUserService {
 
     public List<BsUser> findList() {
         return bsUserMapper.findList();
+    }
+
+    public List<EcharsData> getvData() {
+        return  bsUserMapper.getvData();
     }
 }

@@ -10,6 +10,8 @@ public class BsComment implements Serializable {
 
     private Date createDate;
 
+    private String  createString;
+
     private String updateBy;
 
     private Date updateDate;
@@ -40,14 +42,20 @@ public class BsComment implements Serializable {
         this.id = id == null ? null : id.trim();
     }
 
-
-
     public Date getCreateDate() {
         return createDate;
     }
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+    public String getCreateString() {
+        return createString;
+    }
+
+    public void setCreateString(String createString) {
+        this.createString = createString;
     }
 
     public String getUpdateBy() {
@@ -138,10 +146,11 @@ public class BsComment implements Serializable {
         this.createBy = createBy;
     }
 
-    public BsComment(String id, BsUser createBy, Date createDate, String updateBy, Date updateDate, String delFlag, String postId, String remarks, String content, Integer likeCount, BsPost bsPost, String userCommentCount, Integer isLike) {
+    public BsComment(String id, BsUser createBy, Date createDate, String createString, String updateBy, Date updateDate, String delFlag, String postId, String remarks, String content, Integer likeCount, BsPost bsPost, String userCommentCount, Integer isLike) {
         this.id = id;
         this.createBy = createBy;
         this.createDate = createDate;
+        this.createString = createString;
         this.updateBy = updateBy;
         this.updateDate = updateDate;
         this.delFlag = delFlag;

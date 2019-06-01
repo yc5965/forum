@@ -229,5 +229,33 @@
 		WHERE
 			p.id = #{bsComment.id}
 	</select>
+    <select id="getCommentList" resultType="BsComment">
+        SELECT
+        a.id AS "id",
+        a.post_id AS "postId",
+        a.content AS "content",
+        a.update_by AS "updateBy.id",
+        a.create_by AS "createBy.id",
+        a.update_date AS "updateDate",
+        a.del_flag AS "delFlag",
+        a.create_date AS "createDate",
+        a.remarks AS "remarks",
+        b.title AS "bsPost.title",
+        u.name AS "createBy.name",
+        u.photo AS "createBy.photo"
+        FROM
+        bs_comment a
+        <include refid="bsCommentJoins"/>
+        where  a.del_flag = '0'
+        LIMIT ${pageStart}, ${pageSize}
+    </select>
+    <select id="findListCount" resultType="java.lang.Integer">
+        SELECT
+        count(*) as commentCount
+        FROM  bs_comment a
+        <where>
+            a.del_flag = '0'
+        </where>
+    </select>
 
 </mapper>

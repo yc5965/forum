@@ -109,7 +109,6 @@ public class BsPostController{
         }else {
             bsPostService.updateBsPost(bsPost);
         }
-
         return new JsonResult(bsPost);
     }
 

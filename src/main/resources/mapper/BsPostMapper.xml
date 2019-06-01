@@ -266,6 +266,51 @@
     limit 0,10
   </select>
 
+    <select id="getAdminPostList" resultType="BsPost">
+        SELECT
+        a.id AS "id",
+        a.title AS "title",
+        d.label AS "postType",
+        a.update_by AS "updateBy.id",
+        a.update_date AS "updateDate",
+        a.remarks AS "remarks",
+        a.del_flag AS "delFlag",
+        f.label AS "postStatus",
+        a.content AS "content",
+        a.post_tags AS "postTags",
+        a.create_by AS "createBy.id",
+        a.cover_img AS "coverImg",
+        a.create_date AS "createDate",
+        a.last_modifiy AS "lastModifiy",
+        a.sort AS "sort",
+        u.photo AS "createBy.photo",
+        u.name AS "createBy.name",
+        d.label as "postTypeLabel"
+        ,b.commentCount AS commentCount
+        ,c.likeCount AS likeCount
+        ,v.viewCount AS viewCount
+        ,u.name As "createBy.name"
+        FROM bs_post a
+        <include refid="bsPostJoins"/>
+        LEFT JOIN (select post_id,count(*) as commentCount from bs_comment bc where bc.del_flag = '0' group by post_id) b on b.post_id = a.id
+        LEFT JOIN (select ref_id,count(*) as likeCount from bs_like bl where bl.del_flag = '0' and bl.like_type = '0' group by ref_id) c on c.ref_id = a.id
+        LEFT JOIN (select ref_id,create_by from bs_like where del_flag = '0' and like_type = '0' group by ref_id,create_by) bl on bl.ref_id = a.id
+        LEFT JOIN (select post_id,count(*) as viewCount from bs_view vc where  to_days(vc.create_date) = to_days(now()) and vc.del_flag = '0'  group by post_id) v on v.post_id = a.id
+        where a.del_flag = '0'
+        ORDER BY  v.viewCount DESC
+        LIMIT ${pageStart}, ${pageSize}
+    </select>
+
+    <select id="findHostListCount" resultType="java.lang.Integer">
+        SELECT
+        count(*)
+        FROM bs_post a
+        <include refid="bsPostJoins"/>
+        LEFT JOIN (select post_id,count(*) as viewCount from bs_view vc where  to_days(vc.create_date) = to_days(now()) and vc.del_flag = '0'  group by post_id) v on v.post_id = a.id
+        where a.del_flag = '0'
+        ORDER BY  v.viewCount DESC
+    </select>
+
   <update id="updatePostLastModifyDate">
         UPDATE bs_post SET
 			last_modifiy = #{LastModifyDate}
@@ -325,7 +370,9 @@
         LEFT JOIN (select ref_id,count(*) as likeCount from bs_like bl where bl.del_flag = '0' and bl.like_type = '0' group by ref_id) c on c.ref_id = a.id
         LEFT JOIN (select post_id,count(*) as viewCount from bs_view bv where bv.del_flag = '0' group by post_id) d on d.post_id = a.id
         LEFT JOIN (select ref_id,create_by from bs_like where del_flag = '0' and like_type = '0' group by ref_id,create_by) bl on bl.ref_id = a.id
-
+        <where>
+            a.del_flag = '0'
+        </where>
         LIMIT ${pageStart}, ${pageSize}
     </select>
 

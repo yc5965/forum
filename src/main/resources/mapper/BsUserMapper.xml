@@ -65,7 +65,17 @@
 
   	<select id="findList" resultType="com.etc.entity.BsUser">
 		select
-		<include refid="bsUserCom" />
+		a.id AS "id",
+		a.password AS "password",
+		a.name AS "name",
+		a.email AS "email",
+		a.phone AS "phone",
+		a.user_type AS "userType",
+		a.create_date AS "createDate",
+		a.remarks AS "remarks",
+		a.photo AS "photo",
+		a.del_flag AS "delFlag",
+		a.expire_date AS "expireDate"
 		from bs_user a
 		where  a.del_flag = '0'
   	</select>
@@ -97,4 +107,16 @@
 		from bs_user a
 		where a.name = #{name} and a.del_flag = '0'
 	</select>
+
+	<select id="getvData" resultType="com.etc.entity.EcharsData">
+		select
+		count(*) as "count",
+		DATE_FORMAT(a.create_date,'%d') as "data"
+		from bs_user a
+		where   a.del_flag = '0' and DATE_SUB(CURDATE(), INTERVAL 7 DAY) &lt;=  a.create_date
+		group by DATE_FORMAT(a.create_date,'%Y-%m-%d')
+		order by a.create_date asc
+	</select>
+
+
 </mapper>

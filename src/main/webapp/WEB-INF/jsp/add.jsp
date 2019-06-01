@@ -159,8 +159,8 @@
                                     </div>
                                 </div>
                             </c:if>
-                            <div class="layui-form-item">
-                                <button class="layui-btn" id="addPost">立即发布</button>
+                            <div class="layui-item">
+                                <button type='button' class="layui-btn" id="addPost">立即发布</button>
                             </div>
                         </form>
                     </div>
@@ -213,13 +213,12 @@
                 return false;
             }
             var loadIndex = layer.load(0);
-
             var formdata = new FormData();
             formdata.append('file', $('#coverImg')[0].files[0]); //上传文件
-            formdata.append('id', id); //id
+            formdata.append('id', id);
             formdata.append('content', content);
-            formdata.append('tags', tags);
-            formdata.append('postType', postType); //id
+            formdata.append('postTags', tags);
+            formdata.append('postType', postType);
             formdata.append('title', title);
             formdata.append('postStatus', postStatus);
             $.ajax({

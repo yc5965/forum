@@ -3,31 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>乐瑞后台管理系统</title>
     <script src="/static/jquery/jquery-3.0.0.min.js"></script>
     <link rel="stylesheet" href="/static/layuiadmin/layui/css/layui.css" media="all">
     <link rel="stylesheet" href="/static/layuiadmin/style/admin.css" media="all">
-    <script src="/static/layui/res/layui/layui.js"></script>
+    <link rel="stylesheet" href="/static/layui2/css/layui.css" media="all">
+    <script src="/static/layui2/layui.js"></script>
 </head>
 <body>
 <div class="layui-fluid">
     <div class="layui-row layui-col-space15">
         <div class="layui-col-md12">
             <div class="layui-card">
-                <div class="layui-card-header">用户信息管理</div>
+                <div class="layui-card-header">帖子信息管理</div>
                 <div class="layui-card-body">
-                    <table class="layui-table" lay-data="{ height:800,url:'/admin/getPostList', page:true, id:'bsPostList', skin: 'row', even: true,limit:30}">
+                    <table class="layui-table" lay-data="{ height:600,url:'/admin/getPostList', page:true, id:'bsPostList', skin: 'row', even: true,limit:15,toolbar: '#toolbarDemo',defaultToolbar:['filter', 'print']}">
                         <thead>
                             <tr>
+                                <th lay-data="{field:'id',hide:true}">标题</th>
                                 <th lay-data="{field:'title',templet: '#postTitleTpl'}">标题</th>
-                                <th lay-data="{field:'createBy',templet: '#postTitleTp2'}">标题</th>
-                                <th lay-data="{field:'postType' }">帖子类型</th>
+                                <th lay-data="{field:'createBy.name',templet: '#postTitleTp2'}">用户</th>
+                                <th lay-data="{field:'postType',width:120}">帖子类型</th>
                                 <th lay-data="{field:'postTags'}">标签</th>
-                                <th lay-data="{field:'createDate'}">创建时间</th>
+                                <th lay-data="{field:'createString',sort: true}">创建时间</th>
                                 <th lay-data="{field:'postStatus'}">帖子位置</th>
-                                <th lay-data="{field:'commentCount', sort: true}">评论数量</th>
+                                <th lay-data="{field:'commentCount',sort: true}">评论数量</th>
                                 <th lay-data="{field:'likeCount', sort: true}">点赞数量</th>
                                 <th lay-data="{field:'viewCount', sort: true}">查看数量</th>
+                                <th lay-data="{toolbar: '#barDemo',width:120}">操作</th>
                             </tr>
                         </thead>
                     </table>
@@ -37,22 +42,52 @@
     </div>
 </div>
 
+<script type="text/html" id="toolbarDemo">
+        <div class="demoTable" style="width: 500px;float: left">
+
+        </div>
+</script>
+
 <script type="text/html" id="postTitleTpl">
     <a href="/home/detail?id={{d.id}}" class="layui-table-link" target="_blank">{{ d.title }}</a>
 </script>
 <script type="text/html" id="postTitleTp2">
     <a href="/home/user?id={{d.createBy.id}}" class="layui-table-link" target="_blank">{{ d.createBy.name }}</a>
 </script>
+<script type="text/html" id="barDemo">
+    <a class="layui-btn layui-btn-xs" href="/home/add?id={{d.id}}" target="_blank">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" type="delPost" onclick="deletePost('{{d.id}}',this)">删除</a>
+</script>
 <script>
-    layui.use('element', function(){
-        var element = layui.element;
-    });
-    layui.use(['table', 'layer', 'laytpl', 'jquery', 'laypage'], function () {
-        var laytpl = layui.laytpl;
-        var layer = layui.layer;
+    layui.use(['element','table','layer','laytpl','jquery','laypage'], function() {
         var table = layui.table;
+        var element = layui.element;
+        var layer = layui.layer;
+        var laytpl = layui.laytpl;
         var $ = jQuery = layui.$;
         var laypage = layui.laypage;
+        window.deletePost = function (id,e) {
+            layer.confirm("确认删除该篇文章？", {}, function () {
+                var loadIndex = layer.load(0);
+                $.ajax({
+                    url: "/bs/bsPost/deletePost",
+                    type: 'post',
+                    data: JSON.stringify({id: id}),
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (r) {
+                        layer.msg("删除成功!");
+                        $(e).parent().parent().parent().remove();
+                    },
+                    complete: function (XMLHttpRequest, textStatus) {
+                        layer.close(loadIndex);
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        layer.close(loadIndex);
+                    }
+                })
+            });
+        }
     })
 </script>
 </body>

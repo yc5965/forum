@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.util.Date;
 import java.util.Properties;
+import java.util.Random;
 import java.util.UUID;
 
 @Controller
@@ -98,9 +99,14 @@ public class LoginController {
             return new JsonResult("昵称");
         }
         else if (ObjectUtil.isNull(bsUser)) {
+            int max=9;
+            int min=1;
+
+            Random random = new Random();
+            int number = random.nextInt(max) % (max - min + 1) + min;
             user.setDelFlag("0");
+            user.setPhoto("/avatar/default/p"+String.valueOf(number)+".jpg");
             user.setCreateDate(new Date());
-            user.setPhoto("/avatar/default/default.jpg");
             user.setId(UUID.randomUUID().toString());
             user.setPassword(EnDecryptUtil.MD5(user.getPassword()));
             user.setUserType("1");

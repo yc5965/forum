@@ -1,6 +1,7 @@
 package com.etc.dao;
 
 import com.etc.entity.BsComment;
+import com.etc.entity.BsPost;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -28,4 +29,8 @@ public interface BsCommentMapper {
     void insert(@Param("bsComment")BsComment bsComment);
 
     BsComment get(@Param("id") String id);
+
+    List<BsComment> getCommentList(@Param("pageStart") Integer pageStart,@Param("pageSize") Integer pageSize);
+
+    Integer findListCount();
 }

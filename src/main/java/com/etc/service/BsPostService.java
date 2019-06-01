@@ -118,4 +118,14 @@ public class BsPostService {
 	public List<BsPost> getPostList(Integer pageStart, Integer limit) {
 		return bsPostMapper.getPostList(pageStart,limit);
 	}
+
+	public List<BsPost> getAdminPostList(Integer pageStart, Integer limit) {
+		return bsPostMapper.getAdminPostList(pageStart,limit);
+	}
+
+	public Integer findHostListCount() {
+		return bsPostMapper.findHostListCount();
+	}
+
+
 }

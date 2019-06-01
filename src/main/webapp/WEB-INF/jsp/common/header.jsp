@@ -58,9 +58,9 @@
             <li class="layui-hide-xs" id="wenews"><a href="${ctx}/wenews/indexWenews">我闻资讯</a></li>
             <li class="layui-hide-xs" id="indexCaixin"><a href="${ctx}/caixinIndex/indexCaixin">财新头条</a></li>
             <li  class="layui-hide-xs" id="indexWeekly"><a href="${ctx}/caixinWeekly/weeklyCaixin">新闻周刊</a></li>
-            <a href="javascript:;" class="layui-btn" id="search" style="margin-top: 6px"><span class="fly-search LAY_search"><i
+            <a href="javascript:;" class="layui-btn" id="search" style="margin-top: 6px;display: none"><span class="fly-search LAY_search"><i
                     class="layui-icon"></i></span></a>
-            <input type="text" placeholder="点击搜索" class="layui-input search-bar" id="searchVal" style="margin-top: 6px">
+            <input type="text" placeholder="点击搜索" class="layui-input search-bar" id="searchVal" style="margin-top: 6px;display: none">
         </ul>
 
     </div>
@@ -130,19 +130,29 @@
         var locationUrl = window.location.href;
         if (locationUrl.indexOf("cj") != -1) {
             $("#caijing").addClass("layui-this");
+            $("#search").hide();
+            $("#searchVal").hide();
             return
         } else if (locationUrl.indexOf("caixinIndex") != -1) {
             $("#indexCaixin").addClass("layui-this");
+            $("#search").show();
+            $("#searchVal").show();
             return
         } else if (locationUrl.indexOf("caixinWeekly") != -1) {
             $("#indexWeekly").addClass("layui-this");
+            $("#search").hide();
+            $("#searchVal").hide();
             return
         } else if (locationUrl.indexOf("wenews") != -1) {
             $("#wenews").addClass("layui-this");
+            $("#search").hide();
+            $("#searchVal").hide();
             return
         }
         else if (locationUrl.indexOf("index") != -1) {
             $("#index").addClass("layui-this");
+            $("#search").hide();
+            $("#searchVal").hide();
             return
         }
     });

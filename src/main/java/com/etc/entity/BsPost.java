@@ -10,6 +10,8 @@ public class BsPost implements Serializable {
 
     private Date createDate;
 
+    private String createString;
+
     private String updateBy;
 
     private Date updateDate;
@@ -56,6 +58,14 @@ public class BsPost implements Serializable {
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+    public String getCreateString() {
+        return createString;
+    }
+
+    public void setCreateString(String createString) {
+        this.createString = createString;
     }
 
     public String getUpdateBy() {

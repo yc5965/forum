@@ -38,4 +38,8 @@ public interface BsPostMapper {
     Integer findListCount();
 
     List<BsPost> getPostList(@Param("pageStart") Integer pageStart,@Param("pageSize") Integer pageSize);
+
+    List<BsPost> getAdminPostList(@Param("pageStart") Integer pageStart,@Param("pageSize") Integer pageSize);
+
+    Integer findHostListCount();
 }

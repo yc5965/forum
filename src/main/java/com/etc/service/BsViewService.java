@@ -5,11 +5,14 @@ package com.etc.service;
 
 import com.etc.dao.BsViewMapper;
 import com.etc.entity.BsView;
+import com.etc.entity.EcharsData;
 import com.github.pagehelper.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.xml.crypto.Data;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -37,12 +40,21 @@ public class BsViewService {
 	
 	@Transactional(readOnly = false)
 	public void save(BsView bsView) {
+		bsView.setCreateDate(new Date());
+		bsView.setUpdateDate(new Date());
 		bsViewMapper.insert(bsView);
 	}
 	
 	@Transactional(readOnly = false)
 	public void delete(BsView bsView) {
+	}
 
+	public List<EcharsData> getzData() {
+		return bsViewMapper.getzData();
+	}
+
+	public List<EcharsData> getsData() {
+		return bsViewMapper.getsData();
 	}
 	
 }

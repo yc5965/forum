@@ -20,11 +20,15 @@ public class BsUser implements Serializable {
 
     private Date createDate;
 
+    private String createString;
+
     private String remarks;
 
     private String delFlag;
 
     private Date expireDate;
+
+    private String  expireString;
 
     private static final long serialVersionUID = 1L;
 
@@ -94,6 +98,22 @@ public class BsUser implements Serializable {
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+    public String getCreateString() {
+        return createString;
+    }
+
+    public void setCreateString(String createString) {
+        this.createString = createString;
+    }
+
+    public String getExpireString() {
+        return expireString;
+    }
+
+    public void setExpireString(String expireString) {
+        this.expireString = expireString;
     }
 
     public String getRemarks() {
